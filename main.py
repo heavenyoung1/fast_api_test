@@ -1,9 +1,12 @@
 from fastapi import FastAPI, Body, Path
 from typing import Annotated
 from models import CreateUser
-#from fastapi.responses import HTMLResponse
-#from pydantic import EmailStr
 import uvicorn
+
+from .sql_app import crud, models, schemas
+from .sql_app.database import Sessionlocal, engine
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI() #FastAPI - это класс, который наследуется от Starlette, app - это экземпляр класса.
 
