@@ -1,7 +1,13 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-
+from pydantic import BaseModel, EmailStr
+from typing import Annotated
+from fastapi import FastAPI, Body, Path
 from .database import Base #Из нашего файла импортируем 
+
+class CreateUser(BaseModel):
+    username: Annotated[str, Path(min_length=5, max_length=20)]
+    email: EmailStr 
 
 class User(Base):
     __tablename__ = "users"
