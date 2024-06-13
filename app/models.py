@@ -2,7 +2,7 @@ from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from pydantic import BaseModel, EmailStr
 from typing import Annotated
-from fastapi import FastAPI, Body, Path
+from fastapi import  Path
 from .database import Base #Из нашего файла импортируем 
 
 class CreateUser(BaseModel):
@@ -28,3 +28,8 @@ class Item(Base):
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="itrems") #"Волшебный" атрибут, содержащий значения других таблиц, связанных с этой
+
+class Product(Base):
+    name = String
+    description = String
+    price = Integer
