@@ -1,30 +1,21 @@
+# Описание моделей Pydantic
+
 from pydantic import BaseModel
 
-class ItemBase(BaseModel):
-    title: str
-    description: str | None = None # = None - значение по умолчанию
-
-class ItemCreate(ItemBase):         #Не запутаться в = и : при определении моделей
-    pass
-
-class Item(ItemBase):
+class ElementItem(BaseModel):
     id: int
-    owner_id: int
-
-    class Config:
-        orm_mode = True
-
-class UserBase(BaseModel):
     name: str
+    desc: str
+    link: str
+    pic: str
 
-class UserCreate(UserBase):
-    password: str
 
-class User(UserBase):
-    id: int
-    is_active: bool
-    items: list[Item] = []
+class ElementItem(Base):
+    """Представляет собой элемент портфолио"""
+    __tablename__ = "Products"
 
-    class Config:
-        orm_mode = True
-
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, index=True)
+    desc = Column(String)
+    link = Column(String, unique=True)
+    pic = Column(String)

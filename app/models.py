@@ -1,35 +1,14 @@
+# Описание моделей SQLAlchemy
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel, EmailStr
-from typing import Annotated
-from fastapi import  Path
-from .database import Base #Из нашего файла импортируем 
+from database import Base
 
-class CreateUser(BaseModel):
-    username: Annotated[str, Path(min_length=5, max_length=20)]
-    email: EmailStr 
-
-class User(Base):
-    __tablename__ = "users"
+class ElementItem(Base):
+    """Представляет собой элемент портфолио"""
+    __tablename__ = "Products"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
-
-    items = relationship("Item", back_populates="owner") #Вместо back_populates можно использовать backref, разобраться!!!!
-
-class Item(Base):
-    __tablename__ = "items"
-
-    id = Column(Integer, primary_key=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True) #Индексы нужны для ускорения выполнения запросов
-    owner_id = Column(Integer, ForeignKey("users.id"))
-
-    owner = relationship("User", back_populates="itrems") #"Волшебный" атрибут, содержащий значения других таблиц, связанных с этой
-
-class Product(Base):
-    name = String
-    description = String
-    price = Integer
+    name = Column(String, unique=True, index=True)
+    desc = Column(String)
+    link = Column(String, unique=True)
+    pic = Column(String)
