@@ -20,6 +20,13 @@ def get_db():
     finally:
         db.close()
 
+@app.post("/products", response_model=schemas.Product)
+def create_product(product: schemas.Product, db: Session = Depends(get_db)):
+    db_product = crud.get_product(db, product_id=product.id)
+    if db_product:
+        raise HTTPException(status_code=400, detail="ID already existed")
+    return crud.create_product(db=db, product=product)
+
 @app.get("/products", response_model=list[schemas.Product])
 def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     products = crud.get_all_products(db, skip=skip, limit=limit)
