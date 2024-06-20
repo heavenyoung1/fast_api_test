@@ -1,11 +1,12 @@
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.staticfiles import StaticFiles
+
 from starlette.responses import FileResponse
+from sqlalchemy.orm import Session
 
 from app.models import Product
-from sqlalchemy.orm import Session
 from app import crud, models, schemas
-from app.database import SessionLocal, engine,
-
+from app.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -14,6 +15,8 @@ app = FastAPI(
     description="Author HeavenYoung",
     version="0.1",
 )
+
+app.mount("/static", StaticFiles(directory="static"), name="static") #Import Static Files (FastAPI | Starlette)
 
 def get_db():
     db = SessionLocal()
