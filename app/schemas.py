@@ -2,20 +2,11 @@
 
 from pydantic import BaseModel
 
-class ElementItem(BaseModel):
+class BaseProduct(BaseModel):
     id: int
+
+class Product(BaseProduct):
     name: str
     desc: str
     link: str
     pic: str
-
-
-class ElementItem(Base):
-    """Представляет собой элемент портфолио"""
-    __tablename__ = "Products"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True, index=True)
-    desc = Column(String)
-    link = Column(String, unique=True)
-    pic = Column(String)

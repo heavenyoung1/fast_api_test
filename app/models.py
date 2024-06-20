@@ -1,11 +1,11 @@
 # Описание моделей SQLAlchemy
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from database import Base
+from app.database import Base
 
-class ElementItem(Base):
+class Product(Base):
     """Представляет собой элемент портфолио"""
-    __tablename__ = "Products"
+    __tablename__ = "products"
 
     id = Column(Integer, primary_key=True)
     name = Column(String, unique=True, index=True)
