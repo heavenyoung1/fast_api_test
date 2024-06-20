@@ -1,9 +1,11 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, UploadFile, File
 from starlette.responses import FileResponse
 
+from app.models import Product
 from sqlalchemy.orm import Session
 from app import crud, models, schemas
-from app.database import SessionLocal, engine, Base
+from app.database import SessionLocal, engine,
+
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -20,15 +22,15 @@ def get_db():
     finally:
         db.close()
 
-@app.post("/products", response_model=schemas.Product)
-def create_product(product: schemas.Product, db: Session = Depends(get_db)):
+@app.post("/products", response_model=schemas.ProductCreate)
+def create_product(product: schemas.Product, db: Session = Depends(get_db)) -> Product:
     db_product = crud.get_product(db, product_id=product.id)
     if db_product:
         raise HTTPException(status_code=400, detail="ID already existed")
     return crud.create_product(db=db, product=product)
 
 @app.get("/products", response_model=list[schemas.Product])
-def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)) -> list[Product]:
     products = crud.get_all_products(db, skip=skip, limit=limit)
     return products
 
