@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'SfMono';
+    src: url(/static/fonts/SFMono/SFMono-Medium.woff2);
+}
+
+body {
+    background-color: #0a192f; 
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin: 30px 50px;
+
+}
+
+.dropdown-item {
+    list-style-type: none;
+    padding-left: 50px;
+    color: #ccd6f6;
+    font-;
+}
+
+.dropdown-item::first-letter {
+    color: red;
+}
+
+.dropdown-item:: {
+    color: red;
+}
+
+
+.main-above {
+    color: #64ffda;
+    margin: 0px 0px 30px 4px;
+    font-family: var(--font-mono);
+    font-size: clamp(var(--fz-sm),5vw,var(--fz-md));
+    font-weight: 400;
+}
+
+.main-on {
+    color: #e6f1ff;
+    margin: 0px 0px 10px;
+    font-weight: 600;
+
+    line-height: 1.1;
+}
+
+.main-down {
+    color: #ccd6f6;
+    margin: 0px 0px 10px;
+    font-weight: 600;
+
+    line-height: 1.1;
+}
+
+.dropdown-item {
+    color: #ccd6f6;
+}
+
+.navigation-bar {
+    color: #ccd6f6;
+}
+
+nav {
+    color: #ccd6f6;
+}
+
+

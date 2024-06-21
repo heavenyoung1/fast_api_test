@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+                <title>Привет, мир!</title>
+                
+                    {% block title %}
+                    {% endblock %}
+    </head>
+
+<body>
+    {% include "navbar.html" %}
+    {% block content %}
+    {% endblock %}
+
+
+
+
+    <h2 class="main-above">Hi, my name is</h2>
+    <h1 class="main-on">Eugene</h1>
+    <h3 class="main-down">I build things for the web.</h3>
+</body>
+</html>

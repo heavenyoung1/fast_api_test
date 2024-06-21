@@ -1,12 +1,24 @@
-from fastapi import FastAPI, Depends, HTTPException
+from enum import Enum
+
+from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 
-from starlette.responses import FileResponse
+from starlette.responses import FileResponse, HTMLResponse
 from sqlalchemy.orm import Session
 
 from app.models import Product
 from app import crud, models, schemas
 from app.database import SessionLocal, engine
+
+from fastapi.templating import Jinja2Templates
+
+class ModelName(str, Enum):
+    about = "About"
+    experience = "Experience"
+    work = "work"
+    contact = "Contact"
+    resume = "Resume"
+
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -17,6 +29,7 @@ app = FastAPI(
 )
 
 app.mount("/static", StaticFiles(directory="static"), name="static") #Import Static Files (FastAPI | Starlette)
+templates = Jinja2Templates(directory="templates")
 
 def get_db():
     db = SessionLocal()
@@ -48,6 +61,6 @@ def read_product(product_id: int, db: Session = Depends(get_db)):
 def root():
     return{"message": "Hello World!"}
 
-@app.get("/home")
-def get_home():
-    return FileResponse("static/index.html")
+@app.get("/home", response_class=HTMLResponse)
+def root(request: Request):
+    return templates.TemplateResponse(request=request, name="index.html")
