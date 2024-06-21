@@ -2,16 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-
                 <title>Привет, мир!</title>
-                
                     {% block title %}
                     {% endblock %}
     </head>
 
 <body>
     {% include "navbar.html" %}
-    {% block content %}
+        {% block content %}
     {% endblock %}
 
     <main class="main-information">
@@ -24,8 +22,10 @@
 
 
     {% include "about.html" %}
-    {% block content1 %}
+        {% block content1 %}
     {% endblock %}
+
+    
 </main>
 </body>
 </html>

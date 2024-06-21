@@ -3,7 +3,9 @@ from enum import Enum
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 
-from starlette.responses import FileResponse, HTMLResponse
+
+from pathlib import Path
+from starlette.responses import HTMLResponse, FileResponse
 from sqlalchemy.orm import Session
 
 from app.models import Product
@@ -64,3 +66,9 @@ def root():
 @app.get("/home", response_class=HTMLResponse)
 def root(request: Request):
     return templates.TemplateResponse(request=request, name="index.html")
+
+@app.get("/person")
+def get_image():
+    image_path = Path("static/image_1.jpg")
+    return FileResponse(image_path)
+
