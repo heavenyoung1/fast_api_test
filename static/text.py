@@ -3,3 +3,11 @@ list_about = [
     'Fast-forward to today, and I’ve had the privilege of working at an advertising agency, a start-up, a huge corporation, and a student-led design studio. My main focus these days is building accessible, inclusive products and digital experiences at Upstatement for a variety of clients.',
     'I also recently launched a course that covers everything you need to build a web app with the Spotify API using Node & React.'
 ]
+
+list_skills = [
+    'Python',
+    'SQL',
+    'WordPress',
+    'Tilda',
+    'FastAPI'
+]

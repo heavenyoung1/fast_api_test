@@ -1,8 +1,8 @@
 from enum import Enum
+from static.text import list_skills
 
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
-
 
 from pathlib import Path
 from starlette.responses import HTMLResponse, FileResponse
@@ -72,3 +72,6 @@ def get_image():
     image_path = Path("static/image_1.jpg")
     return FileResponse(image_path)
 
+@app.get("/get_list_skills")
+def get_list_skills():
+    return list_skills
