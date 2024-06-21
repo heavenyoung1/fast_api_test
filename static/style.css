@@ -1,6 +1,26 @@
 @font-face {
-    font-family: 'SfMono';
+    font-family: 'SFMono Medium';
     src: url(/static/fonts/SFMono/SFMono-Medium.woff2);
+}
+
+@font-face {
+    font-family: 'SFMono Regular';
+    src: url(/static/fonts/SFMono/SFMono-Regular.woff2);
+}
+
+@font-face {
+    font-family: 'Calibre Light';
+    src: url(/static/fonts/Calibre/Calibre-Light.woff2);
+}
+
+@font-face {
+    font-family: 'Calibre Semibold';
+    src: url(/static/fonts/Calibre/Calibre-Semibold.woff2);
+}
+
+@font-face {
+    font-family: 'Calibre Semibold Italic';
+    src: url(/static/fonts/Calibre/Calibre-SemiboldItalic.woff2);
 }
 
 body {
@@ -13,48 +33,54 @@ body {
     align-items: center;
     height: 100%;
     margin: 30px 50px;
-
 }
 
 .dropdown-item {
     list-style-type: none;
     padding-left: 50px;
-    color: #ccd6f6;
-    font-;
+    font-family: "SFMono Medium";
 }
 
-.dropdown-item::first-letter {
-    color: red;
+.main-information {
+    margin: 200px 200px 200px 200px;
 }
-
-.dropdown-item:: {
-    color: red;
-}
-
 
 .main-above {
     color: #64ffda;
     margin: 0px 0px 30px 4px;
-    font-family: var(--font-mono);
-    font-size: clamp(var(--fz-sm),5vw,var(--fz-md));
-    font-weight: 400;
+    font-family: "SFMono Regular";
+    font-weight: 10;
+    font-size: 20px;
 }
 
 .main-on {
-    color: #e6f1ff;
-    margin: 0px 0px 10px;
-    font-weight: 600;
-
-    line-height: 1.1;
-}
-
-.main-down {
     color: #ccd6f6;
     margin: 0px 0px 10px;
     font-weight: 600;
-
-    line-height: 1.1;
+    font-family: 'Calibre Semibold';
+    font-size: 80px;
 }
+
+.main-down {
+    color: #8892b0;
+    margin: 10px 0px 10px;
+    font-weight: 600;
+    font-family: 'Calibre Semibold';
+    font-size: 80px;
+}
+
+.description {
+    font-family: "SFMono Regular";
+    color:#ccd6f6;
+    width: 1000px;
+}
+
+.container-about {
+    margin-top: 500px;
+    font-family: "SFMono Regular";
+}
+
+
 
 .dropdown-item {
     color: #ccd6f6;
