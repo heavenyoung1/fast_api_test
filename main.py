@@ -3,6 +3,8 @@ from static.text import list_skills
 
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
 
 from pathlib import Path
 from starlette.responses import HTMLResponse, FileResponse
@@ -12,8 +14,6 @@ from app.models import Product
 from app import crud, models, schemas
 from app.database import SessionLocal, engine
 
-from fastapi.templating import Jinja2Templates
-
 class ModelName(str, Enum):
     about = "About"
     experience = "Experience"
@@ -21,12 +21,11 @@ class ModelName(str, Enum):
     contact = "Contact"
     resume = "Resume"
 
-
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="My first test app made on FastAPI",
-    description="Author HeavenYoung",
+    description="Creator HeavenYoung",
     version="0.1",
 )
 
@@ -64,7 +63,7 @@ def root():
     return{"message": "Hello World!"}
 
 @app.get("/home", response_class=HTMLResponse)
-def root(request: Request):
+def root(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(request=request, name="index.html")
 
 @app.get("/person")
@@ -72,6 +71,12 @@ def get_image():
     image_path = Path("static/image_1.jpg")
     return FileResponse(image_path)
 
-@app.get("/get_list_skills")
-def get_list_skills():
-    return list_skills
+@app.get("/get_list_skills", response_class=HTMLResponse)
+def get_list_skills(request: Request):
+    return templates.TemplateResponse(request=Request, name="item.html")
+
+
+@app.get("/resume")
+def redirect_to_resume():
+    return RedirectResponse("https://github.com/heavenyoung1/heavenyoung1/blob/main/Резюме.pdf")
+
