@@ -73,7 +73,14 @@ def get_image():
 
 @app.get("/get_list_skills", response_class=HTMLResponse)
 def get_list_skills(request: Request):
-    return templates.TemplateResponse(request=Request, name="item.html")
+    dict_skills = {
+    1: 'Python',
+    2: 'SQL',
+    3: 'WordPress',
+    4: 'Tilda',
+    5: 'FastAPI'
+}
+    return templates.TemplateResponse(request=request, name="item.html", context={"id": id})
 
 
 @app.get("/resume")

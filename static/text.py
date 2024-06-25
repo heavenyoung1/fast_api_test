@@ -11,3 +11,11 @@ list_skills = [
     'Tilda',
     'FastAPI'
 ]
+
+dict_skills = {
+    1: 'Python',
+    2: 'SQL',
+    3: 'WordPress',
+    4: 'Tilda',
+    5: 'FastAPI'
+}
