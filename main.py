@@ -80,8 +80,13 @@ def get_list_skills(request: Request):
     4: 'Tilda',
     5: 'FastAPI'
 }
-    return templates.TemplateResponse(request=request, name="item.html", context={"id": id})
+    #return templates.TemplateResponse(request=request, name="item.html")
+    return dict_skills
 
+
+@app.get("/get1", response_class=HTMLResponse)
+def root(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(request=request, name="item.html")
 
 @app.get("/resume")
 def redirect_to_resume():
