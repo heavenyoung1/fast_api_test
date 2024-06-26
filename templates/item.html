@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-                <title>Привет, мир!</title>
-                    {% block title %}
-                    {% endblock %}
-    </head>
-<body>
-        <ul>
-            {}
-        </ul>
-</body>
-</html>
+
+            {% for key, value in result.items() %}
+                <li class="list_skills">{{ value }}</li>
+            {% endfor %}
+

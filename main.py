@@ -1,5 +1,5 @@
 from enum import Enum
-from static.text import list_skills
+from static.text import dict_skills
 
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
@@ -71,24 +71,14 @@ def get_image():
     image_path = Path("static/image_1.jpg")
     return FileResponse(image_path)
 
-@app.get("/get_list_skills", response_class=HTMLResponse)
-def get_list_skills(request: Request):
-    dict_skills = {
-    1: 'Python',
-    2: 'SQL',
-    3: 'WordPress',
-    4: 'Tilda',
-    5: 'FastAPI'
-}
-    #return templates.TemplateResponse(request=request, name="item.html")
-    return dict_skills
-
-
-@app.get("/get1", response_class=HTMLResponse)
-def root(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse(request=request, name="item.html")
-
 @app.get("/resume")
 def redirect_to_resume():
     return RedirectResponse("https://github.com/heavenyoung1/heavenyoung1/blob/main/Резюме.pdf")
 
+@app.get("/dict")
+async def form_post(request: Request):
+    return templates.TemplateResponse('item.html', context={'request': request, 'result': dict_skills})
+
+@app.get("/about", response_class=HTMLResponse, )
+def root(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(request=request, name="about.html")
