@@ -23,6 +23,11 @@
     src: url(/static/fonts/Calibre/Calibre-SemiboldItalic.woff2);
 }
 
+@font-face {
+    font-family: 'Calibre Medium';
+    src: url(/static/fonts/Calibre/Calibre-Medium.woff2);
+}
+
 body {
     background-color: #0a192f; 
 }
@@ -50,7 +55,7 @@ body {
     margin: 0px 0px 30px 4px;
     font-family: "SFMono Regular";
     font-weight: 10;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .main-on {
@@ -70,14 +75,16 @@ body {
 }
 
 .description {
-    font-family: "SFMono Regular";
-    color:#ccd6f6;
-    width: 1000px;
+    font-family: 'Calibre Light';
+    color:#8892b0;
+    width: 600px;
+    font-size: 20px;
 }
 
 .container-about {
-    margin-top: 500px;
-    font-family: "SFMono Regular";
+    margin-top: 400px;
+    font-family: 'Calibre Medium';
+
 }
 
 .main-flex-container-about {
@@ -86,9 +93,15 @@ body {
 }
 
 .container-text-about {
+    font-family: "Calibre Light";
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+.text-about {
+    font-family: "SFMono Medium";
 }
 
 .person-image {
@@ -100,28 +113,21 @@ p {
     color: #8892b0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-.dropdown-item {
-    color: #ccd6f6;
+.job-experiences {
+    margin-top: 200px;
 }
 
-.navigation-bar {
-    color: #ccd6f6;
-}
 
-nav {
-    color: #ccd6f6;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 

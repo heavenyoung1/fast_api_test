@@ -75,9 +75,8 @@ def get_image():
 def redirect_to_resume():
     return RedirectResponse("https://github.com/heavenyoung1/heavenyoung1/blob/main/Резюме.pdf")
 
-@app.get("/dict")
-async def form_post(request: Request):
-    return templates.TemplateResponse('item.html', context={'request': request, 'result': dict_skills})
+def get_list_skills():
+    return dict_skills
 
 @app.get("/about", response_class=HTMLResponse, )
 def root(request: Request) -> HTMLResponse:

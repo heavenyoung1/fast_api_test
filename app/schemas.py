@@ -13,3 +13,5 @@ class ProductCreate(ProductBase):
 
 class Product(ProductBase):
     id: int 
+
+    
