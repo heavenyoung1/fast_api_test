@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from .models import Product, Job
+from .models import Product, Company
 
 from . import models, schemas
 
@@ -13,26 +13,42 @@ def get_all_products(db: Session, skip: int = 0, limit: int = 100) -> list[Produ
 
 def create_product(db: Session, product: schemas.Product):
     db_product = models.Product(id = product.id,
-                                 name = product.name,
-                                 desc = product.desc,
-                                 link = product.link,
-                                 pic = product.pic)
+                                name = product.name,
+                                desc = product.desc,
+                                link = product.link,
+                                pic = product.pic)
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
     return db_product
 
 def create_job(db: Session, job: schemas.Job):
-    db_job = models.Job(id = job.id,
+    db_job = models.Company(id = job.id,
                         name = job.name,
-                        link = job.link_job,
+                        link_job = job.link_job,
                         period = job.period,
                         function = job.function)
+    db.add(db_job)
+    db.commit()
+    db.refresh(db_job)
+    return db_job
 
-def get_all_jobs(db: Session, skip: int = 0, limit: int = 100) -> list[Job]:
-    """Получение списка работ"""
-    return db.query(models.Job).offset(skip),limit(limit).all()
+def create_desc(db: Session, func_job: schemas.FunctionJob):
+    db_func_job = models.FunctionJob(id = func_job.id,
+                                     desc = func_job.description)
+    db.add(db_func_job)
+    db.commit()
+    db.refresh(db_func_job)
+    return db_func_job
 
-def get_job(db: Session, job_id: int) -> Job | None:
+def get_desc(db: Session, job_id: int):
     """Получить Job по id"""
-    return db.query(models.Job).filter(models.Job.id == job_id).first()
+    return db.query(models.FunctionJob).filter(models.FunctionJob.id == job_id).first()
+
+def get_all_jobs(db: Session, skip: int = 0, limit: int = 100) -> list[Company]:
+    """Получение списка работ"""
+    return db.query(models.Company).offset(skip),limit(limit).all()
+
+def get_job(db: Session, job_id: int) -> Company | None:
+    """Получить Job по id"""
+    return db.query(models.Company).filter(models.Company.id == job_id).first()

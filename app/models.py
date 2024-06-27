@@ -13,11 +13,10 @@ class Product(Base):
     link = Column(String, unique=True)
     pic = Column(String)
 
-class Job(Base):
-    """Опыт работы в разных компаниях"""
-    __tablename__ = "job"
+class Company(Base):
+    __tablename__ = "company"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True) 
     name = Column(String, unique=True, index=True)
     position = Column(String)
     link_job = Column(String)
@@ -25,8 +24,10 @@ class Job(Base):
     function = relationship("FunctionJob", back_populates="description")
 
 class FunctionJob(Base):
-    """Функции для конкретного места работы"""
-    __tablename__ = "description-job"
+    __tablename__ = "functions-in-company"
 
     id = Column(Integer, primary_key=True)
-    description = relationship("Job", back_populates="function")
+    job_id = Column(Integer, ForeignKey("company.id"))
+    description = relationship("Company", back_populates="function")
+
+

@@ -15,11 +15,19 @@ class Product(ProductBase):
     id: int 
 
 class JobBase(BaseModel):
-    id: int
-
-class Job(JobBase):
     name: str
     position: str
     link_job: str  
     period: str
-    function: str
+    function: list
+
+class JobCreate(JobBase):
+    pass
+
+class Job(JobBase):
+    id: int
+    
+class FunctionJob(BaseModel):
+    id: int
+    description: str
+

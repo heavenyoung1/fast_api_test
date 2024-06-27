@@ -1,4 +1,3 @@
-from enum import Enum
 from static.text import dict_skills
 
 from fastapi import FastAPI, Depends, HTTPException, Request
@@ -10,16 +9,9 @@ from pathlib import Path
 from starlette.responses import HTMLResponse, FileResponse
 from sqlalchemy.orm import Session
 
-from app.models import Product
+from app.models import Product, Company, FunctionJob
 from app import crud, models, schemas
 from app.database import SessionLocal, engine
-
-class ModelName(str, Enum):
-    about = "About"
-    experience = "Experience"
-    work = "work"
-    contact = "Contact"
-    resume = "Resume"
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -45,6 +37,20 @@ def create_product(product: schemas.Product, db: Session = Depends(get_db)) -> P
     if db_product:
         raise HTTPException(status_code=400, detail="ID already existed")
     return crud.create_product(db=db, product=product)
+
+@app.post("/jobs", response_model=schemas.JobCreate)
+def create_job(job: schemas.Job, db: Session = Depends(get_db)) -> Company:
+    db_job = crud.get_job(db, job_id=job.id)
+    if db_job:
+        raise HTTPException(status_code=400, detail="ID already existed")
+    return crud.create_job(db=db, job=job)
+
+@app.post("/job-description", response_model=schemas.FunctionJob)
+def create_job_func(function_job: schemas.FunctionJob, db: Session = Depends(get_db)) -> FunctionJob:
+    db_func_job = crud.create_desc(db, job_id=function_job.id)
+    if db_func_job: 
+            raise HTTPException(status_code=400, detail="ID already existed")
+    return crud.create_desc
 
 @app.get("/products", response_model=list[schemas.Product])
 def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)) -> list[Product]:
