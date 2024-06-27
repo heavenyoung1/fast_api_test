@@ -14,4 +14,12 @@ class ProductCreate(ProductBase):
 class Product(ProductBase):
     id: int 
 
-    
+class JobBase(BaseModel):
+    id: int
+
+class Job(JobBase):
+    name: str
+    position: str
+    link_job: str  
+    period: str
+    function: str

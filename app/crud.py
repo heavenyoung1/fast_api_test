@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from .models import Product
+from .models import Product, Job
 
 from . import models, schemas
 
@@ -21,3 +21,18 @@ def create_product(db: Session, product: schemas.Product):
     db.commit()
     db.refresh(db_product)
     return db_product
+
+def create_job(db: Session, job: schemas.Job):
+    db_job = models.Job(id = job.id,
+                        name = job.name,
+                        link = job.link_job,
+                        period = job.period,
+                        function = job.function)
+
+def get_all_jobs(db: Session, skip: int = 0, limit: int = 100) -> list[Job]:
+    """Получение списка работ"""
+    return db.query(models.Job).offset(skip),limit(limit).all()
+
+def get_job(db: Session, job_id: int) -> Job | None:
+    """Получить Job по id"""
+    return db.query(models.Job).filter(models.Job.id == job_id).first()
