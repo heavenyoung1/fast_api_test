@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from app.database import Base
 
 class Product(Base):
-    """Представляет собой элемент портфолио"""
+    """Представляет собой элемент Портфолио"""
     __tablename__ = "products"
 
     id = Column(Integer, primary_key=True)
@@ -14,6 +14,7 @@ class Product(Base):
     pic = Column(String)
 
 class Company(Base):
+    """Представляет собой элемент Компания"""
     __tablename__ = "company"
 
     id = Column(Integer, primary_key=True, index=True) 
@@ -24,6 +25,7 @@ class Company(Base):
     function = relationship("FunctionJob", back_populates="company", cascade="all, delete-orphan")
 
 class FunctionJob(Base):
+    """Представляет собой элемент Функция, дочерняя таблиц"""
     __tablename__ = "functions_in_company"
 
     id = Column(Integer, primary_key=True)

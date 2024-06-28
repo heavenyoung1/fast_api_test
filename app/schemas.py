@@ -26,11 +26,13 @@ class JobCreate(JobBase):
 
 class Job(JobBase):
     id: int
-    
-class FunctionJob(BaseModel):
-    id: int
+
+class FunctionJobBase(BaseModel):
+    pass
+
+class FunctionJob(FunctionJobBase):
+    job_id: int
     description: str
 
-    class Config:
-        orm_mode = True
+
 

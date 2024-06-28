@@ -11,7 +11,9 @@ def get_all_products(db: Session, skip: int = 0, limit: int = 100) -> list[Produ
     """получение всех products"""
     return db.query(models.Product).offset(skip).limit(limit).all()
 
+#---------------------------------------------------------------------------------------
 def create_product(db: Session, product: schemas.Product):
+    """Фунция для отправки ПРОДУКТА в БД, нужно избавиться от введения ID!!!"""
     db_product = models.Product(id = product.id,
                                 name = product.name,
                                 desc = product.desc,
@@ -23,6 +25,7 @@ def create_product(db: Session, product: schemas.Product):
     return db_product
 
 def create_job(db: Session, job: schemas.Job):
+    """Фунция для отправки КОМПАНИИ в БД, нужно избавиться от введения ID!!!"""
     db_job = models.Company(#id = job.id,
                         name = job.name,
                         position=job.position,
@@ -35,12 +38,15 @@ def create_job(db: Session, job: schemas.Job):
     return db_job
 
 def create_desc(db: Session, func_job: schemas.FunctionJob):
-    db_func_job = models.FunctionJob(job_id = func_job.id,
+    """Фунция для отправки ОПИСАНИЯ ФУНКЦИИ ВЫПОЛНЯЕМОЙ В КОМПАНИИ в БД"""
+    db_func_job = models.FunctionJob(job_id = func_job.job_id,
                                      description = func_job.description)
     db.add(db_func_job)
     db.commit()
     db.refresh(db_func_job)
     return db_func_job
+
+#---------------------------------------------------------------------------------------
 
 def get_desc(db: Session, job_id: int):
     """Получить Job по id"""
