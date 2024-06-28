@@ -11,9 +11,9 @@ from sqlalchemy.orm import Session
 
 from app.models import Product, Company, FunctionJob
 from app import crud, models, schemas
-from app.database import SessionLocal, engine
+from app.database import SessionLocal, Base, engine
 
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="My first test app made on FastAPI",
@@ -47,7 +47,7 @@ def create_job(job: schemas.Job, db: Session = Depends(get_db)) -> Company:
 
 @app.post("/job-description", response_model=schemas.FunctionJob)
 def create_job_func(function_job: schemas.FunctionJob, db: Session = Depends(get_db)) -> FunctionJob:
-    db_func_job = crud.create_desc(db, job_id=function_job.id)
+    db_func_job = crud.create_desc(db, func_job=function_job)
     if db_func_job: 
             raise HTTPException(status_code=400, detail="ID already existed")
     return crud.create_desc

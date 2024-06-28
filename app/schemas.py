@@ -19,7 +19,7 @@ class JobBase(BaseModel):
     position: str
     link_job: str  
     period: str
-    function: list
+    function: list[str] #было list, так должно быть в pydantic
 
 class JobCreate(JobBase):
     pass
@@ -30,4 +30,7 @@ class Job(JobBase):
 class FunctionJob(BaseModel):
     id: int
     description: str
+
+    class Config:
+        orm_mode = True
 

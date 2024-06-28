@@ -23,19 +23,20 @@ def create_product(db: Session, product: schemas.Product):
     return db_product
 
 def create_job(db: Session, job: schemas.Job):
-    db_job = models.Company(id = job.id,
+    db_job = models.Company(#id = job.id,
                         name = job.name,
+                        position=job.position,
                         link_job = job.link_job,
                         period = job.period,
-                        function = job.function)
+                        ) #function = job.function
     db.add(db_job)
     db.commit()
     db.refresh(db_job)
     return db_job
 
 def create_desc(db: Session, func_job: schemas.FunctionJob):
-    db_func_job = models.FunctionJob(id = func_job.id,
-                                     desc = func_job.description)
+    db_func_job = models.FunctionJob(job_id = func_job.id,
+                                     description = func_job.description)
     db.add(db_func_job)
     db.commit()
     db.refresh(db_func_job)
