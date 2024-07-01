@@ -1,3 +1,16 @@
+<!DOCTYPE html> 
+<html lang="ru">
+    <head>
+        <link rel="stylesheet" href="/static/style.css">
+        <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+        <meta charset="UTF-8">
+                <title>Привет, мир!</title>
+                    {% block title %}
+                    {% endblock %}
+
+
+    </head>
+<body>
 
 <div class="container">
     <ul class="company-list">
@@ -24,12 +37,6 @@
 
 
 
-
-
-
-    position = Column(String)
-    link_job = Column(String)
-    period = Column(String)
-
-
 </div>
+
+</body> 

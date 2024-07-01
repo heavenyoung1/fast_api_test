@@ -30,9 +30,15 @@
         {% block content1 %}
     {% endblock %}
 
+    <ul class="skills-container">{% for i in skills %}
+    <h2 class="el-skills"><li>{{ i }}</li></h2>
+    </ul>{% endfor %}
+    
 
+
+    <h2 class="text-about" href="#" span style="color: #64ffda">02. <span style="color: #ccd6f6"> Where I've worked</h2>
     {% include "work.html" %}
-        {% block content2 %}
+        {% block content3 %}
     {% endblock %}
 
     

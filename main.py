@@ -1,4 +1,4 @@
-from static.text import dict_skills
+from static.text import dict_skills, list_skills
 
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
@@ -74,16 +74,14 @@ def root():
     """GET-запрос на получение корневой страницы"""
     return{"message": "Hello World!"}
 
-
-
-
-
-
 @app.get("/home", response_class=HTMLResponse)
 def root(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
     """GET-запрос на получение домашней страницы"""
+    skills = list_skills
     companies_item = crud.get_companies(db)
-    return templates.TemplateResponse("index.html", {"request": request, "items": companies_item})
+    return templates.TemplateResponse("index.html", {"request": request, 
+                                                     "items": companies_item, 
+                                                     "skills": skills})
 
 @app.get("/person")
 def get_image():
@@ -100,16 +98,21 @@ def get_list_skills():
     """GET-запрос (Тестовый эндпоинт для получения словаря, пока что не используется)"""
     return dict_skills
 
-@app.get("/about", response_class=HTMLResponse, )
-def root(request: Request) -> HTMLResponse:
-    """GET-запрос (Получение секции about, вложенной в index.HTML, наверное нужно избавиться от этого!!!)"""
-    return templates.TemplateResponse(request=request, name="about.html")
+# @app.get("/about", response_class=HTMLResponse, )
+# def root(request: Request) -> HTMLResponse:
+#     """GET-запрос (Получение секции about, вложенной в index.HTML, наверное нужно избавиться от этого!!!)"""
+#     return templates.TemplateResponse(request=request, name="about.html")
+
+@app.get("/skills", response_class=HTMLResponse)
+def read_root(request: Request):
+    skills = list_skills
+    return templates.TemplateResponse("skills.html", {"request": request, "skills": skills})
 
 
 
 
 
-@app.get("/")
+@app.get("/work")
 def red_item(request: Request, db: Session = Depends(get_db)):
     companies_item = crud.get_companies(db)
     return templates.TemplateResponse("work.html", {"request": request, "items": companies_item})
@@ -120,5 +123,6 @@ def get_positions(request: Request, company_id: int, db: Session = Depends(get_d
     companies_item = crud.get_companies(db)
     selected_company = crud.get_company_by_id(db, company_id)
     return templates.TemplateResponse("index.html", {"request": request, "items": companies_item, "selected_company": selected_company})
+
 
 
