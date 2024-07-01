@@ -1,5 +1,7 @@
+<ul>
+    {% for company in items %}
+        <li>{{ company.name }}: {{ company.position }}</li>
+    {% endfor %}
 
-            {% for key, value in get_list_skills.items() %}
-                <li class="list_skills">{{ value }}</li>
-            {% endfor %}
+
 

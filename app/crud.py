@@ -59,3 +59,6 @@ def get_all_jobs(db: Session, skip: int = 0, limit: int = 100) -> list[Company]:
 def get_job(db: Session, job_id: int) -> Company | None:
     """Получить Job по id"""
     return db.query(models.Company).filter(models.Company.id == job_id).first()
+
+def get_companies(db: Session):
+    return db.query(models.Company).all()   

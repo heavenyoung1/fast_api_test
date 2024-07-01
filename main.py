@@ -99,3 +99,9 @@ def root(request: Request) -> HTMLResponse:
     """GET-запрос (Получение секции about, вложенной в index.HTML, наверное нужно избавиться от этого!!!)"""
     return templates.TemplateResponse(request=request, name="about.html")
 
+@app.get("/items")
+def red_item(request: Request, db: Session = Depends(get_db)):
+    companies_item = crud.get_companies(db)
+    return templates.TemplateResponse("item.html", {"request": request, "items": companies_item})
+
+
