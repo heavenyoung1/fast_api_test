@@ -62,3 +62,6 @@ def get_job(db: Session, job_id: int) -> Company | None:
 
 def get_companies(db: Session):
     return db.query(models.Company).all()   
+
+def get_company_by_id(db: Session, company_id: int):
+    return db.query(Company).filter(Company.id == company_id).first()

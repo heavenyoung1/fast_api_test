@@ -74,10 +74,16 @@ def root():
     """GET-запрос на получение корневой страницы"""
     return{"message": "Hello World!"}
 
+
+
+
+
+
 @app.get("/home", response_class=HTMLResponse)
-def root(request: Request) -> HTMLResponse:
+def root(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
     """GET-запрос на получение домашней страницы"""
-    return templates.TemplateResponse(request=request, name="index.html")
+    companies_item = crud.get_companies(db)
+    return templates.TemplateResponse("index.html", {"request": request, "items": companies_item})
 
 @app.get("/person")
 def get_image():
@@ -99,9 +105,20 @@ def root(request: Request) -> HTMLResponse:
     """GET-запрос (Получение секции about, вложенной в index.HTML, наверное нужно избавиться от этого!!!)"""
     return templates.TemplateResponse(request=request, name="about.html")
 
-@app.get("/items")
+
+
+
+
+@app.get("/")
 def red_item(request: Request, db: Session = Depends(get_db)):
     companies_item = crud.get_companies(db)
-    return templates.TemplateResponse("item.html", {"request": request, "items": companies_item})
+    return templates.TemplateResponse("work.html", {"request": request, "items": companies_item})
+
+
+@app.get("/company/{company_id}", response_class=HTMLResponse)
+def get_positions(request: Request, company_id: int, db: Session = Depends(get_db)):
+    companies_item = crud.get_companies(db)
+    selected_company = crud.get_company_by_id(db, company_id)
+    return templates.TemplateResponse("index.html", {"request": request, "items": companies_item, "selected_company": selected_company})
 
 

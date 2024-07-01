@@ -1,0 +1,35 @@
+
+<div class="container">
+    <ul class="company-list">
+        <li class="company-item">
+            {% for company in items %}
+                    <a href="/company/{{ company.id }}" class="company-link" >
+                        <h2>{{ company.name }}</h2>
+                    </a>
+            {% endfor %}
+        </li>
+    </ul>
+    <div class="content">
+        <ul>
+        {% if selected_company %}
+            <div class="job-title">{{ selected_company.position }} @ <span class="job-company">{{ selected_company.name }}</span></div>
+            <div class="job-period">{{ selected_company.period }}</div>
+            <ul class="job-description">
+                {% for desc in selected_company.function %}
+                <li>{{ desc.description }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+
+
+
+
+
+    position = Column(String)
+    link_job = Column(String)
+    period = Column(String)
+
+
+</div>

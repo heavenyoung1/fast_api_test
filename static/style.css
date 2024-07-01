@@ -122,6 +122,40 @@ p {
 
 
 
+/* -------------------------------- */
+
+
+.company-list {
+    list-style: none;
+    padding-left: 0;
+}
+.company-item {
+    margin-bottom: 10px;
+}
+.company-link {
+    color: #ccd6f6;
+    text-decoration: none;
+    cursor: pointer;
+}
+.company-link:hover {
+    color: #64ffda;
+}
+.job-title {
+    color: #64ffda;
+    font-weight: bold;
+}
+.job-period {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: aliceblue;
+}
+.job-description {
+    list-style-type: none;
+    padding-left: 0;
+}
+.job-description li {
+    margin-bottom: 10px;
+}
 
 
 
