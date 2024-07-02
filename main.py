@@ -31,6 +31,8 @@ def get_db():
     finally:
         db.close()
 
+#------------------------POST-REQUESTS---------------------------------------------------
+
 @app.post("/products", response_model=schemas.ProductCreate)
 def create_product(product: schemas.Product, db: Session = Depends(get_db)) -> Product:
     """POST-запрос на отправку продукта в БД"""
@@ -55,6 +57,13 @@ def create_job_func(function_job: schemas.FunctionJob, db: Session = Depends(get
             raise HTTPException(status_code=400, detail="ID already existed")
     return crud.create_desc
 
+#------------------------GET-REQUEST---------------------------------------------------
+
+@app.get("/")
+def root():
+    """GET-запрос на получение корневой страницы"""
+    return{"message": "Hello World!"}
+
 @app.get("/products", response_model=list[schemas.Product])
 def read_products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)) -> list[Product]:
     """GET-запрос на получение списка продуктов"""
@@ -68,11 +77,6 @@ def read_product(product_id: int, db: Session = Depends(get_db)):
     if db_product is None:
         raise HTTPException(status_code=404, detail="Product not found")
     return db_product
-
-@app.get("/")
-def root():
-    """GET-запрос на получение корневой страницы"""
-    return{"message": "Hello World!"}
 
 @app.get("/home", response_class=HTMLResponse)
 def root(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
@@ -94,35 +98,10 @@ def redirect_to_resume():
     """GET-запрос на получение Резюме лежащего на GitHub"""
     return RedirectResponse("https://github.com/heavenyoung1/heavenyoung1/blob/main/Резюме.pdf")
 
-def get_list_skills():
-    """GET-запрос (Тестовый эндпоинт для получения словаря, пока что не используется)"""
-    return dict_skills
-
-# @app.get("/about", response_class=HTMLResponse, )
-# def root(request: Request) -> HTMLResponse:
-#     """GET-запрос (Получение секции about, вложенной в index.HTML, наверное нужно избавиться от этого!!!)"""
-#     return templates.TemplateResponse(request=request, name="about.html")
-
 @app.get("/skills", response_class=HTMLResponse)
 def read_root(request: Request):
     skills = list_skills
     return templates.TemplateResponse("skills.html", {"request": request, "skills": skills})
-
-
-
-
-
-@app.get("/work")
-def red_item(request: Request, db: Session = Depends(get_db)):
-    companies_item = crud.get_companies(db)
-    return templates.TemplateResponse("work.html", {"request": request, "items": companies_item})
-
-
-@app.get("/company/{company_id}", response_class=HTMLResponse)
-def get_positions(request: Request, company_id: int, db: Session = Depends(get_db)):
-    companies_item = crud.get_companies(db)
-    selected_company = crud.get_company_by_id(db, company_id)
-    return templates.TemplateResponse("index.html", {"request": request, "items": companies_item, "selected_company": selected_company})
 
 
 

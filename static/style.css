@@ -147,6 +147,7 @@ p { /*DONE*/
 
 
 .company-list {
+
     list-style: none;
     padding-left: 0;
 }
@@ -162,6 +163,7 @@ p { /*DONE*/
     color: #64ffda;
 }
 .job-title {
+    font-family: "SFMono Medium";
     color: #64ffda;
     font-weight: bold;
 }
