@@ -87,12 +87,12 @@ body {
 
 }
 
-.main-flex-container-about {
+.main-flex-container-about { /*DONE*/
     display: flex;
     flex-direction: row;
 }
 
-.container-text-about {
+.container-text-about { /*DONE*/
     font-family: "Calibre Light";
     font-size: 20px;
     display: flex;
@@ -100,27 +100,46 @@ body {
     width: 50%;
 }
 
+.about-description1 { /*DONE*/
+    margin: 0px;
+}
+
 .text-about {
     font-family: "SFMono Medium";
 }
 
-.person-image {
+.person-image { /*DONE*/
     padding-left: 100px;
-    border-color: aqua;
 }
 
-p {
+p { /*DONE*/
     color: #8892b0;
 }
 
-.job-experiences {
-    margin-top: 200px;
+.skills-container { 
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
 }
 
-.el-skills {
-    color: #ccd6f6;
+.el-skills { /*DONE*/
+    flex: 1 1 30%;
+    font-size: 14px;
+    color: #8892b0;
+    font-family: "SFMono Medium";
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: left;
 }
 
+.skills-container li::before { /*DONE*/
+    content: "- "; /* Кастомный маркер */
+    position: static;
+    left: 0;
+    color: #64ffda; /* Цвет маркера */
+    font-size: 1.0em; /* Размер маркера */
+}
 
 
 

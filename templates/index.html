@@ -30,9 +30,9 @@
         {% block content1 %}
     {% endblock %}
 
-    <ul class="skills-container">{% for i in skills %}
-    <h2 class="el-skills"><li>{{ i }}</li></h2>
-    </ul>{% endfor %}
+    {% include "skills.html" %}
+        {% block content2 %}
+    {% endblock %}
     
 
 
@@ -45,3 +45,4 @@
 </main>
 </body>
 </html>
+

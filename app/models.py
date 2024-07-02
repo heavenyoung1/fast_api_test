@@ -13,6 +13,14 @@ class Product(Base):
     link = Column(String, unique=True)
     pic = Column(String)
 
+class ProjectPlate(Base):
+    __tablename__ = "projects"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, index=True)
+    description = Column(String)
+    skills = Column(String)
+
 class Company(Base):
     """Представляет собой элемент Компания"""
     __tablename__ = "company"

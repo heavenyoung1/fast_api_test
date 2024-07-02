@@ -17,5 +17,6 @@ list_skills = [
     'SQL',
     'WordPress',
     'Tilda',
+    'FastAPI',
     'FastAPI'
 ]
