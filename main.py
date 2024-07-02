@@ -103,5 +103,29 @@ def read_root(request: Request):
     skills = list_skills
     return templates.TemplateResponse("skills.html", {"request": request, "skills": skills})
 
+#---------------------НИЖЕ ДОРАБОТКИ------------------------#
+
+# @app.get("/company", response_class=HTMLResponse) 
+# def get_companies(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
+#     companies = crud.get_companies(db)
+#     return templates.TemplateResponse("company.html", {"request": request, "companies": companies})
+
+@app.get("/company", response_class=HTMLResponse)
+def get_companies(request: Request, company_id: int = None, db: Session = Depends(get_db)) -> HTMLResponse:
+    companies = crud.get_companies(db)
+    selected_company = None
+    
+    if company_id:
+        selected_company = crud.get_company_by_id(db, company_id)
+    
+    return templates.TemplateResponse("company.html", {"request": request, "companies": companies, "selected_company": selected_company})
+
+@app.get("/company/{company_id}", response_class=HTMLResponse)
+def get_company(request: Request, company_id: int, db: Session = Depends(get_db)) -> HTMLResponse:
+    company = crud.get_company_by_id(db, company_id)
+    if not company:
+        raise HTTPException(status_code=404, detail="Company not found")
+    return templates.TemplateResponse("company_detail.html", {"request": request, "company": company})
+
 
 

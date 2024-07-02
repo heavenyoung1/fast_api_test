@@ -1,0 +1,29 @@
+<head>
+    {% for company in companies %}
+{{ company.name }}
+{% endfor %} 
+</head>
+
+<h1>Company List</h1>
+<ul>
+    {% for company in companies %}
+        <li>
+            <a href="/company?company_id={{ company.id }}">{{ company.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<div id="company-details">
+    {% if selected_company %}
+        <h2>{{ selected_company.name }}</h2>
+        <p>Position: {{ selected_company.position }}</p>
+        <p>Link: <a href="{{ selected_company.link_job }}">{{ selected_company.link_job }}</a></p>
+        <p>Period: {{ selected_company.period }}</p>
+        <h3>Functions:</h3>
+        <ul>
+            {% for function in selected_company.function %}
+                <li>{{ function.description }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
