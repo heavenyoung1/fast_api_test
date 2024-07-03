@@ -130,16 +130,14 @@ def read_root(request: Request):
 #     return templates.TemplateResponse("company_detail.html", {"request": request, "company": company})
 
 @app.get("/lol", response_class=HTMLResponse)
-def read_item(request: Request, db: Session = Depends(get_db)):
+def read_companies(request: Request, selected_company_id: int = None, db: Session = Depends(get_db)):
     companies = crud.get_companies(db)
-    company_data = []
-    for company in companies:
-        functions = crud.get_functions_by_company_id(db, company.id)
-        company_data.append({
-            "company": company,
-            "functions": functions
-        })
-    return templates.TemplateResponse("index.html", {"request": request, "company_data": company_data})
+    selected_company = None
+    functions = []
+    if selected_company_id:
+        selected_company = crud.get_company_by_id(db, selected_company_id)
+        functions = crud.get_functions_by_company_id(db, selected_company_id)
+    return templates.TemplateResponse("index.html", {"request": request, "companies": companies, "selected_company": selected_company, "functions": functions})
 
 
 

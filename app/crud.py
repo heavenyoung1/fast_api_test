@@ -60,11 +60,11 @@ def get_job(db: Session, job_id: int) -> Company | None:
     """Получить Job по id"""
     return db.query(models.Company).filter(models.Company.id == job_id).first()
 
-def get_companies(db: Session):
-    return db.query(models.Company).all()   
+def get_company_by_id(db: Session, company_id: int):
+    return db.query(models.Company).filter(models.Company.id == company_id).first()
 
-# def get_company_by_id(db: Session, company_id: int):
-#     return db.query(Company).filter(Company.id == company_id).first()
+def get_companies(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Company).offset(skip).limit(limit).all()
 
 def get_functions_by_company_id(db: Session, company_id: int):
     return db.query(models.FunctionJob).filter(models.FunctionJob.job_id == company_id).all()

@@ -42,32 +42,32 @@
         {% block content3 %}
         {% endblock %}
 
-        <section class="main-container">
-            <h2 class="main-above">Where I've Worked</h2>
-            <div class="work-container">
-                <div class="company-list">
-                    {% for data in company_data %}
-                        <div class="company">
-                            <h3>{{ data.company.name }}</h3>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="company-details">
-                    {% for data in company_data %}
-                        <div class="details">
-                            <h3>{{ data.company.position }}</h3>
-                            <p>{{ data.company.period }}</p>
-                            <a href="{{ data.company.link_job }}">{{ data.company.name }}</a>
-                            <ul>
-                                {% for function in data.functions %}
-                                    <li>{{ function.description }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endfor %}
-                </div>
+        <div class="work-container">
+            <div class="company-list">
+                {% for company in companies %}
+                    <div class="company">
+                        <a href="?selected_company_id={{ company.id }}">
+                            <h3>{{ company.name }}</h3>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
-        </section>
+            <div class="company-details">
+                {% if selected_company %}
+                    <div class="details">
+                        <h3>{{ selected_company.position }}</h3>
+                        <p>{{ selected_company.period }}</p>
+                        <a href="{{ selected_company.link_job }}">{{ selected_company.name }}</a>
+                        <ul>
+                            {% for function in functions %}
+                                <li>{{ function.description }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>Please select a company to see the details.</p>
+                {% endif %}
+            </div>
 
 
 </main>
