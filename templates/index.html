@@ -38,10 +38,38 @@
 
 <!-- БЛОК 2 WHERE I'VE WORKED -->
 
-    <h2 class="text-about" href="#" span style="color: #64ffda">02. <span style="color: #ccd6f6"> Where I've worked</h2>
+        {% include "company.html" %}
+        {% block content3 %}
+        {% endblock %}
+
+        <section class="main-container">
+            <h2 class="main-above">Where I've Worked</h2>
+            <div class="work-container">
+                <div class="company-list">
+                    {% for data in company_data %}
+                        <div class="company">
+                            <h3>{{ data.company.name }}</h3>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="company-details">
+                    {% for data in company_data %}
+                        <div class="details">
+                            <h3>{{ data.company.position }}</h3>
+                            <p>{{ data.company.period }}</p>
+                            <a href="{{ data.company.link_job }}">{{ data.company.name }}</a>
+                            <ul>
+                                {% for function in data.functions %}
+                                    <li>{{ function.description }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
 
 
-    
 </main>
 </body>
 </html>

@@ -13,6 +13,8 @@ from app.models import Product, Company, FunctionJob
 from app import crud, models, schemas
 from app.database import SessionLocal, Base, engine
 
+from typing import Optional
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -110,22 +112,35 @@ def read_root(request: Request):
 #     companies = crud.get_companies(db)
 #     return templates.TemplateResponse("company.html", {"request": request, "companies": companies})
 
-@app.get("/company", response_class=HTMLResponse)
-def get_companies(request: Request, company_id: int = None, db: Session = Depends(get_db)) -> HTMLResponse:
-    companies = crud.get_companies(db)
-    selected_company = None
+# @app.get("/company", response_class=HTMLResponse)
+# def get_companies(request: Request, company_id: int = None, db: Session = Depends(get_db)) -> HTMLResponse:
+#     companies = crud.get_companies(db)
+#     selected_company = None
     
-    if company_id:
-        selected_company = crud.get_company_by_id(db, company_id)
+#     if company_id:
+#         selected_company = crud.get_company_by_id(db, company_id)
     
-    return templates.TemplateResponse("company.html", {"request": request, "companies": companies, "selected_company": selected_company})
+#     return templates.TemplateResponse("company.html", {"request": request, "companies": companies, "selected_company": selected_company})
 
-@app.get("/company/{company_id}", response_class=HTMLResponse)
-def get_company(request: Request, company_id: int, db: Session = Depends(get_db)) -> HTMLResponse:
-    company = crud.get_company_by_id(db, company_id)
-    if not company:
-        raise HTTPException(status_code=404, detail="Company not found")
-    return templates.TemplateResponse("company_detail.html", {"request": request, "company": company})
+# @app.get("/company/{company_id}", response_class=HTMLResponse)
+# def get_company(request: Request, company_id: int, db: Session = Depends(get_db)) -> HTMLResponse:
+#     company = crud.get_company_by_id(db, company_id)
+#     if not company:
+#         raise HTTPException(status_code=404, detail="Company not found")
+#     return templates.TemplateResponse("company_detail.html", {"request": request, "company": company})
+
+@app.get("/lol", response_class=HTMLResponse)
+def read_item(request: Request, db: Session = Depends(get_db)):
+    companies = crud.get_companies(db)
+    company_data = []
+    for company in companies:
+        functions = crud.get_functions_by_company_id(db, company.id)
+        company_data.append({
+            "company": company,
+            "functions": functions
+        })
+    return templates.TemplateResponse("index.html", {"request": request, "company_data": company_data})
+
 
 
 
