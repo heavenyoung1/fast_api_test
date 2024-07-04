@@ -38,9 +38,7 @@
 
 <!-- БЛОК 2 WHERE I'VE WORKED -->
 
-        {% include "company.html" %}
-        {% block content3 %}
-        {% endblock %}
+<h2 class="text-about" href="#" span style="color: #64ffda">02. <span style="color: #ccd6f6"> Where I've worked</h2>
 
         <div class="work-container">
             <div class="company-list">
@@ -57,7 +55,7 @@
                     <div class="details">
                         <h3>{{ selected_company.position }}</h3>
                         <p>{{ selected_company.period }}</p>
-                        <a href="{{ selected_company.link_job }}">{{ selected_company.name }}</a>
+                        <a href="{{ selected_company.link_job }}">@{{ selected_company.name }}</a>
                         <ul>
                             {% for function in functions %}
                                 <li>{{ function.description }}</li>
@@ -69,6 +67,7 @@
                 {% endif %}
             </div>
 
+<!-- БЛОК 2 WHERE I'VE WORKED -->    
 
 </main>
 </body>

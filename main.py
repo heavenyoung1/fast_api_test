@@ -80,14 +80,7 @@ def read_product(product_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Product not found")
     return db_product
 
-@app.get("/home", response_class=HTMLResponse)
-def root(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
-    """GET-запрос на получение домашней страницы"""
-    skills = list_skills
-    companies_item = crud.get_companies(db)
-    return templates.TemplateResponse("index.html", {"request": request, 
-                                                     "items": companies_item, 
-                                                     "skills": skills})
+
 
 @app.get("/person")
 def get_image():
@@ -100,36 +93,10 @@ def redirect_to_resume():
     """GET-запрос на получение Резюме лежащего на GitHub"""
     return RedirectResponse("https://github.com/heavenyoung1/heavenyoung1/blob/main/Резюме.pdf")
 
-@app.get("/skills", response_class=HTMLResponse)
-def read_root(request: Request):
-    skills = list_skills
-    return templates.TemplateResponse("skills.html", {"request": request, "skills": skills})
 
 #---------------------НИЖЕ ДОРАБОТКИ------------------------#
 
-# @app.get("/company", response_class=HTMLResponse) 
-# def get_companies(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
-#     companies = crud.get_companies(db)
-#     return templates.TemplateResponse("company.html", {"request": request, "companies": companies})
-
-# @app.get("/company", response_class=HTMLResponse)
-# def get_companies(request: Request, company_id: int = None, db: Session = Depends(get_db)) -> HTMLResponse:
-#     companies = crud.get_companies(db)
-#     selected_company = None
-    
-#     if company_id:
-#         selected_company = crud.get_company_by_id(db, company_id)
-    
-#     return templates.TemplateResponse("company.html", {"request": request, "companies": companies, "selected_company": selected_company})
-
-# @app.get("/company/{company_id}", response_class=HTMLResponse)
-# def get_company(request: Request, company_id: int, db: Session = Depends(get_db)) -> HTMLResponse:
-#     company = crud.get_company_by_id(db, company_id)
-#     if not company:
-#         raise HTTPException(status_code=404, detail="Company not found")
-#     return templates.TemplateResponse("company_detail.html", {"request": request, "company": company})
-
-@app.get("/lol", response_class=HTMLResponse)
+@app.get("/home", response_class=HTMLResponse)
 def read_companies(request: Request, selected_company_id: int = None, db: Session = Depends(get_db)):
     companies = crud.get_companies(db)
     selected_company = None
@@ -137,8 +104,23 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
     if selected_company_id:
         selected_company = crud.get_company_by_id(db, selected_company_id)
         functions = crud.get_functions_by_company_id(db, selected_company_id)
-    return templates.TemplateResponse("index.html", {"request": request, "companies": companies, "selected_company": selected_company, "functions": functions})
 
+    skills = list_skills
+    companies_item = crud.get_companies(db)
+    return templates.TemplateResponse("index.html", {"request": request, 
+                                                     "companies": companies, 
+                                                     "selected_company": selected_company, 
+                                                     "functions": functions,
+                                                     "skills": skills,
+                                                     "items": companies_item})
 
+# ------------------------------------ На всякий случай ------------------------------------ #
 
-
+# @app.get("/home", response_class=HTMLResponse)
+# def root(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
+#     """Прошлый метод получения главной страницы HOME"""
+#     skills = list_skills
+#     companies_item = crud.get_companies(db)
+#     return templates.TemplateResponse("index.html", {"request": request, 
+#                                                      "items": companies_item, 
+#                                                      "skills": skills})
