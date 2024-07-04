@@ -1,6 +1,6 @@
 # Описание моделей SQLAlchemy
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 from app.database import Base
 
 class Product(Base):
@@ -13,13 +13,23 @@ class Product(Base):
     link = Column(String, unique=True)
     pic = Column(String)
 
+# class ProjectPlate(Base):
+#     __tablename__ = "projects"
+
+#     id = Column(Integer, primary_key=True)
+#     name = Column(String, unique=True, index=True)
+#     description = Column(String)
+#     skills = Column(String)
+#     link = Column(String)
+
 class ProjectPlate(Base):
     __tablename__ = "projects"
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True, index=True)
-    description = Column(String)
-    skills = Column(String)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String, unique=True, index=True)
+    description: Mapped[str] = mapped_column(String)
+    skills: Mapped[str] = mapped_column(String)
+    link: Mapped[str] = mapped_column(String)
 
 class Company(Base):
     """Представляет собой элемент Компания"""

@@ -2,6 +2,8 @@
 
 from pydantic import BaseModel
 
+# --------------- ПРОДУКТ --------------- #
+
 class ProductBase(BaseModel):
     name: str
     desc: str
@@ -13,6 +15,8 @@ class ProductCreate(ProductBase):
 
 class Product(ProductBase):
     id: int 
+
+# --------------- КОМПАНИЯ --------------- #
 
 class JobBase(BaseModel):
     name: str
@@ -27,6 +31,8 @@ class JobCreate(JobBase):
 class Job(JobBase):
     id: int
 
+# --------------- ФУНКЦИИ РАБОТНИКА В КОМПАНИИ --------------- #
+
 class FunctionJobBase(BaseModel):
     pass
 
@@ -34,5 +40,16 @@ class FunctionJob(FunctionJobBase):
     job_id: int
     description: str
 
+# --------------- ПРОЕКТ --------------- #
 
+class ProjectBase(BaseModel):
+    name: str
+    description: str
+    skills: str
+    link: str
 
+class ProjectCreate(ProjectBase):
+    pass
+
+class Project(ProjectBase):
+    id: int

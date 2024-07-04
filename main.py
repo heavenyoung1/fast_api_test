@@ -9,7 +9,7 @@ from pathlib import Path
 from starlette.responses import HTMLResponse, FileResponse
 from sqlalchemy.orm import Session
 
-from app.models import Product, Company, FunctionJob
+from app.models import Product, Company, FunctionJob#, ProjectPlate
 from app import crud, models, schemas
 from app.database import SessionLocal, Base, engine
 
@@ -54,10 +54,18 @@ def create_job(job: schemas.Job, db: Session = Depends(get_db)) -> Company:
 @app.post("/job-description", response_model=schemas.FunctionJob)
 def create_job_func(function_job: schemas.FunctionJob, db: Session = Depends(get_db)) -> FunctionJob:
     """POST-запрос на отправку продукта в Описания Функций для Компании по её ID в БД"""
-    db_func_job = crud.create_desc(db, func_job=function_job)
+    db_func_job = crud.get_desc(db, func_job=function_job)
     if db_func_job: 
             raise HTTPException(status_code=400, detail="ID already existed")
     return crud.create_desc
+
+@app.post("/projects/", response_model=schemas.ProjectCreate)
+def create_project(project: schemas.Project, db: Session = Depends(get_db)):
+    db_project = crud.get_project(db, project_id=project.id)
+    if db_project:  
+        raise HTTPException(status_code=400, detail="ID already existed")
+    return crud.create_project
+
 
 #------------------------GET-REQUEST---------------------------------------------------
 
@@ -107,12 +115,15 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
 
     skills = list_skills
     companies_item = crud.get_companies(db)
+    #projects = db.query(ProjectPlate).all()
+
     return templates.TemplateResponse("index.html", {"request": request, 
                                                      "companies": companies, 
                                                      "selected_company": selected_company, 
                                                      "functions": functions,
                                                      "skills": skills,
-                                                     "items": companies_item})
+                                                     "items": companies_item,
+                                                     }) #"projects": projects
 
 # ------------------------------------ На всякий случай ------------------------------------ #
 

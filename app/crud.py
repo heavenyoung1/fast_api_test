@@ -1,7 +1,9 @@
 from sqlalchemy.orm import Session
-from .models import Product, Company
+from .models import Product, Company, ProjectPlate
 
 from . import models, schemas
+
+from app.schemas import ProjectCreate
 
 def get_product(db: Session, product_id: int) -> Product | None:
     """получить products по id"""
@@ -46,6 +48,16 @@ def create_desc(db: Session, func_job: schemas.FunctionJob):
     db.refresh(db_func_job)
     return db_func_job
 
+def create_project(db: Session, project: schemas.Project):
+    db_project = models.ProjectPlate(name = project.name,
+                                     description = project.description,
+                                     skills = project.skills,
+                                     link = project.link)
+    db.add(db_project)
+    db.commit()
+    db.refresh(db_project)
+    return db_project
+
 #---------------------------------------------------------------------------------------
 
 def get_desc(db: Session, job_id: int):
@@ -68,3 +80,29 @@ def get_companies(db: Session, skip: int = 0, limit: int = 100):
 
 def get_functions_by_company_id(db: Session, company_id: int):
     return db.query(models.FunctionJob).filter(models.FunctionJob.job_id == company_id).all()
+
+#---------------------------------------------------------------------------------------
+
+def get_project(db: Session, project_id: int) -> ProjectPlate | None:
+    return db.query(models.ProjectPlate).filter(models.ProjectPlate.id == project_id).first()
+
+def get_projects(db: Session, skip: int = 0, limit: int = 10) -> list[ProjectPlate]:
+    return db.query(ProjectPlate).offset(skip).limit(limit).all()
+
+def update_project(db: Session, project_id: int, project: ProjectCreate) -> ProjectPlate:
+    db_project = db.query(ProjectPlate).filter(ProjectPlate.id == project_id).first()
+    if db_project is None:
+        return None
+    for key, value in project.dict().items():
+        setattr(db_project, key, value)
+    db.commit()
+    db.refresh(db_project)
+    return db_project
+
+def delete_project(db: Session, project_id: int) -> ProjectPlate:
+    db_project = db.query(ProjectPlate).filter(ProjectPlate.id == project_id).first()
+    if db_project is None:
+        return None
+    db.delete(db_project)
+    db.commit()
+    return db_project

@@ -141,7 +141,7 @@ p { /*DONE*/
     font-size: 1.0em; /* Размер маркера */
 }
 
-/* -------------------------------- */
+/* ----------------СТИЛИ ДЛЯ БЛОКА WHERE I'VE WORKED---------------- */
 
 .main-container {
     padding: 50px;
@@ -159,6 +159,7 @@ h2 {
 .company-list {
     flex: 1;
     margin-right: 20px;
+    font-family: "Calibre Light";
 }
 
 .company {
@@ -186,6 +187,7 @@ h2 {
     padding: 10px 20px;
     background-color: #112240;
     border-radius: 8px;
+    font-family: "SFMono Medium";
 }
 
 .company-details .details {
@@ -225,7 +227,7 @@ h2 {
     margin-right: 8px;
 }
 
-
+/* -------------------------------- */
 
 
 
