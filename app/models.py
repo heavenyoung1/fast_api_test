@@ -26,10 +26,10 @@ class ProjectPlate(Base):
     __tablename__ = "projects"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String, unique=True, index=True)
-    description: Mapped[str] = mapped_column(String)
-    skills: Mapped[str] = mapped_column(String)
-    link: Mapped[str] = mapped_column(String)
+    name: Mapped[str] = mapped_column(String(255), unique=True, index=True)
+    description: Mapped[str] = mapped_column(String(255))
+    skills: Mapped[str] = mapped_column(String(255))
+    link: Mapped[str] = mapped_column(String(255))
 
 class Company(Base):
     """Представляет собой элемент Компания"""

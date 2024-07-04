@@ -83,24 +83,26 @@ def get_functions_by_company_id(db: Session, company_id: int):
 
 #---------------------------------------------------------------------------------------
 
-def get_project(db: Session, project_id: int) -> ProjectPlate | None:
+def get_project(db: Session, project_id: int) -> models.ProjectPlate | None:
     return db.query(models.ProjectPlate).filter(models.ProjectPlate.id == project_id).first()
 
-def get_projects(db: Session, skip: int = 0, limit: int = 10) -> list[ProjectPlate]:
-    return db.query(ProjectPlate).offset(skip).limit(limit).all()
+def get_projects(db: Session):
+    return db.query(models.ProjectPlate).all()
 
-def update_project(db: Session, project_id: int, project: ProjectCreate) -> ProjectPlate:
-    db_project = db.query(ProjectPlate).filter(ProjectPlate.id == project_id).first()
+def update_project(db: Session, project_id: int, project: schemas.ProjectCreate):
+    db_project = db.query(models.ProjectPlate).filter(models.ProjectPlate.id == project_id).first()
     if db_project is None:
         return None
-    for key, value in project.dict().items():
-        setattr(db_project, key, value)
+    db_project.name = project.name
+    db_project.description = project.description
+    db_project.skills = project.skills
+    db_project.link = project.link
     db.commit()
     db.refresh(db_project)
     return db_project
 
-def delete_project(db: Session, project_id: int) -> ProjectPlate:
-    db_project = db.query(ProjectPlate).filter(ProjectPlate.id == project_id).first()
+def delete_project(db: Session, project_id: int):
+    db_project = db.query(models.ProjectPlate).filter(models.ProjectPlate.id == project_id).first()
     if db_project is None:
         return None
     db.delete(db_project)

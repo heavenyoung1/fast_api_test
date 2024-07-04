@@ -54,18 +54,24 @@ def create_job(job: schemas.Job, db: Session = Depends(get_db)) -> Company:
 @app.post("/job-description", response_model=schemas.FunctionJob)
 def create_job_func(function_job: schemas.FunctionJob, db: Session = Depends(get_db)) -> FunctionJob:
     """POST-запрос на отправку продукта в Описания Функций для Компании по её ID в БД"""
-    db_func_job = crud.get_desc(db, func_job=function_job)
+    db_func_job = crud.create_desc(db, func_job=function_job)
     if db_func_job: 
             raise HTTPException(status_code=400, detail="ID already existed")
     return crud.create_desc
+
+# @app.post("/projects/", response_model=schemas.ProjectCreate)
+# def create_project(project: schemas.Project, db: Session = Depends(get_db)):
+#     db_project = crud.get_project(db, project_id=project.id)
+#     if db_project:  
+#         raise HTTPException(status_code=400, detail="ID already existed")
+#     return crud.create_project(db=db, project=project)
 
 @app.post("/projects/", response_model=schemas.ProjectCreate)
 def create_project(project: schemas.Project, db: Session = Depends(get_db)):
     db_project = crud.get_project(db, project_id=project.id)
     if db_project:  
         raise HTTPException(status_code=400, detail="ID already existed")
-    return crud.create_project
-
+    return crud.create_project(db=db, project=project)
 
 #------------------------GET-REQUEST---------------------------------------------------
 
@@ -135,3 +141,4 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
 #     return templates.TemplateResponse("index.html", {"request": request, 
 #                                                      "items": companies_item, 
 #                                                      "skills": skills})
+
