@@ -4,14 +4,6 @@ list_about = [
     'I also recently launched a course that covers everything you need to build a web app with the Spotify API using Node & React.'
 ]
 
-dict_skills = {
-    1: 'Python',
-    2: 'SQL',
-    3: 'WordPress',
-    4: 'Tilda',
-    5: 'FastAPI'
-}
-
 list_skills = [
     'Python',
     'SQL',

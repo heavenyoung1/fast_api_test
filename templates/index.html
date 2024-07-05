@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <script type="module" src="/static/scripts.js" async></script>
-        <link rel="stylesheet" href="/static/style.css">
+<head>
+    <script type="module" src="/static/scripts.js" async></script>
         <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
-        <meta charset="UTF-8">
-        <title>Привет, мир!</title>
-        {% block title %}
-        {% endblock %}
-    </head>
-<body>
-    
-    <div id="left-icons" class="fixed-icons"></div>
-    <div id="right-icons" class="fixed-icons"></div>
+        <link rel="icon" href="/static/icons/favicon.svg">
+            <meta charset="UTF-8">
+                <title>Heaven Young</title>
+                    {% block title %}{% endblock %}
+</head>
 
-    {% include "navbar.html" %}
-        {% block content %}
-    {% endblock %}
+<body>
+
+<div id="left-icons" class="fixed-icons"></div>
+<div id="right-icons" class="fixed-icons"></div>
+
+{% include "navbar.html" %}
+{% block content %}{% endblock %}
 
 <!-- BLOCK 1 - HEAD INFORMATION -->
 
@@ -30,56 +29,51 @@
 
 <!-- BLOCK 01 ABOUT ME -->
 
-    {% include "about.html" %}
-        {% block content1 %}
-    {% endblock %}
+{% include "about.html" %}
+{% block content1 %}{% endblock %}
 
 <!-- BLOCK 1.1 ITERATION SKILLS -->    
 
-    {% include "skills.html" %}
-        {% block content2 %}
-    {% endblock %}
-
-<!-- BLOCK WHERE I'VE WORKED -->
+{% include "skills.html" %}
+{% block content2 %}{% endblock %}
+    
+<!-- BLOCK 2 WHERE I'VE WORKED -->
 
 <h2 class="text-about" href="#" span style="color: #64ffda">02. <span style="color: #ccd6f6"> Where I've worked</h2>
 
-        <div class="work-container">
-            <div class="company-list">
-                {% for company in companies %}
-                    <div class="company">
-                        <a href="?selected_company_id={{ company.id }}">
-                            <h3>{{ company.name }}</h3>
-                        </a>
-                    </div>
-                {% endfor %}
+<div class="work-container">
+    <div class="company-list">
+        {% for company in companies %}
+            <div class="company">
+                <a href="?selected_company_id={{ company.id }}">
+                    <h3>{{ company.name }}</h3>
+                </a>
             </div>
-            <div class="company-details">
-                {% if selected_company %}
-                    <div class="details">
-                        <h3>{{ selected_company.position }}</h3>
-                        <p>{{ selected_company.period }}</p>
-                        <a href="{{ selected_company.link_job }}">@{{ selected_company.name }}</a>
-                        <ul>
-                            {% for function in functions %}
-                                <li>{{ function.description }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% else %}
-                    <p>Please select a company to see the details.</p>
-                {% endif %}
+        {% endfor %}
+    </div>
+    <div class="company-details">
+        {% if selected_company %}
+            <div class="details">
+                <h3>{{ selected_company.position }}</h3>
+                <p>{{ selected_company.period }}</p>
+                <a href="{{ selected_company.link_job }}">@{{ selected_company.name }}</a>
+                <ul>
+                    {% for function in functions %}
+                        <li>{{ function.description }}</li>
+                    {% endfor %}
+                </ul>
             </div>
-        </div>
+        {% else %}
+            <p>Please select a company to see the details.</p>
+        {% endif %}
+    </div>
+</div>
 
-<!-- БЛОК 3 OTHER NOTEWORTHY PROJECTS -->    
+<!-- BLOCK 3 OTHER NOTEWORTHY PROJECTS -->    
 
-<h2 class="text-about" href="#" span style="color: #64ffda">02. <span style="color: #ccd6f6">Other Noteworthy Projects</h2>
-
-
+<h2 class="text-about" href="#" span style="color: #64ffda">03. <span style="color: #ccd6f6">Other Noteworthy Projects</h2>
 
 </main>
 </body>
-
 </html>
 

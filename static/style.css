@@ -29,7 +29,11 @@
 }
 
 body {
-    background-color: #0a192f; 
+    margin: 0;
+    padding: 0;
+    background-color: #0a192f;
+    color: #ccd6f6;
+    font-family: 'Calibre Light';
 }
 
 .menu {
@@ -43,105 +47,97 @@ body {
 .dropdown-item {
     list-style-type: none;
     padding-left: 50px;
-    font-family: "SFMono Medium";
+    font-family: 'SFMono Medium';
 }
 
 .main-information {
-    margin: 200px 200px 200px 200px;
+    margin: 200px;
 }
 
 .main-above {
     color: #64ffda;
-    margin: 0px 0px 30px 4px;
-    font-family: "SFMono Regular";
-    font-weight: 10;
+    margin: 0 0 30px 4px;
+    font-family: 'SFMono Regular';
     font-size: 16px;
+}
+
+.main-on,
+.main-down {
+    margin: 0 0 10px;
+    font-family: 'Calibre Semibold';
+    font-size: 80px;
+    font-weight: 600;
 }
 
 .main-on {
     color: #ccd6f6;
-    margin: 0px 0px 10px;
-    font-weight: 600;
-    font-family: 'Calibre Semibold';
-    font-size: 80px;
 }
 
 .main-down {
     color: #8892b0;
-    margin: 10px 0px 10px;
-    font-weight: 600;
-    font-family: 'Calibre Semibold';
-    font-size: 80px;
 }
 
 .description {
-    font-family: 'Calibre Light';
-    color:#8892b0;
     width: 600px;
     font-size: 20px;
+    color: #8892b0;
 }
 
 .container-about {
     margin-top: 400px;
     font-family: 'Calibre Medium';
-
 }
 
-.main-flex-container-about { /*DONE*/
+.main-flex-container-about {
     display: flex;
     flex-direction: row;
 }
 
-.container-text-about { /*DONE*/
-    font-family: "Calibre Light";
+.container-text-about {
     font-size: 20px;
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
-.about-description1 { /*DONE*/
-    margin: 0px;
+.about-description1 {
+    margin: 0;
 }
 
 .text-about {
-    font-family: "SFMono Medium";
+    font-family: 'SFMono Medium';
 }
 
-.person-image { /*DONE*/
+.person-image {
     padding-left: 100px;
 }
 
-p { /*DONE*/
+p {
     color: #8892b0;
 }
 
-.skills-container { 
+.skills-container {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
 }
 
-.el-skills { /*DONE*/
+.el-skills {
     flex: 1 1 30%;
     font-size: 14px;
     color: #8892b0;
-    font-family: "SFMono Medium";
+    font-family: 'SFMono Medium';
     margin: 10px;
     box-sizing: border-box;
     text-align: left;
 }
 
-.skills-container li::before { /*DONE*/
-    content: "- "; /* Кастомный маркер */
-    position: static;
-    left: 0;
-    color: #64ffda; /* Цвет маркера */
-    font-size: 1.0em; /* Размер маркера */
+.skills-container li::before {
+    content: '- ';
+    color: #64ffda;
+    font-size: 1em;
 }
-
-/* ----------------СТИЛИ ДЛЯ БЛОКА WHERE I'VE WORKED---------------- */
 
 .main-container {
     padding: 50px;
@@ -149,17 +145,17 @@ p { /*DONE*/
 
 h2 {
     color: #64ffda;
-    margin-bottom: 20px;
+    margin: 100px 0 20px;
 }
 
 .work-container {
     display: flex;
+    max-width: 1200px;
 }
 
 .company-list {
     flex: 1;
     margin-right: 20px;
-    font-family: "Calibre Light";
 }
 
 .company {
@@ -187,7 +183,7 @@ h2 {
     padding: 10px 20px;
     background-color: #112240;
     border-radius: 8px;
-    font-family: "SFMono Medium";
+    font-family: 'SFMono Medium';
 }
 
 .company-details .details {
@@ -201,7 +197,6 @@ h2 {
 }
 
 .company-details p {
-    color: #8892b0;
     margin-bottom: 10px;
 }
 
@@ -213,6 +208,7 @@ h2 {
 .company-details ul {
     list-style: none;
     padding: 0;
+    font-size: 18px;
 }
 
 .company-details ul li {
@@ -227,59 +223,21 @@ h2 {
     margin-right: 8px;
 }
 
-/* -------------------------------- СТИЛИ ДЛЯ ВЕРТИКАЛЬНЫХ СТАТИЧЕСКИХ ЭЛЕМЕНТОВ */
-
 .fixed-icons {
     position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1000;
+    bottom: 0;
 }
 
 #left-icons {
     left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 #right-icons {
     right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.fixed-icons a {
-    margin: 10px 0;
-}
-
-.fixed-icons img {
-    width: 24px;
-    height: 24px;
-}
-
-.content {
-    padding: 20px;
-}
-
-/* -------------------------------- СТИЛИ ДЛЯ ВЕРТИКАЛЬНЫХ СТАТИЧЕСКИХ ЭЛЕМЕНТОВ */
-
-.fixed-icons {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
-}
-
-#left-icons {
-    left: 20px;
-    bottom: 20px;
-}
-
-#right-icons {
-    right: 20px;
-    bottom: 20px;
 }
 
 .fixed-icons a {
@@ -290,7 +248,7 @@ h2 {
 .fixed-icons img {
     width: 24px;
     height: 24px;
-    filter: invert(100%); /* Assuming your icons are dark and you want them light */
+    filter: invert(100%);
 }
 
 .line {

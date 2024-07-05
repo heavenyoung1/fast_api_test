@@ -1,7 +1,7 @@
 const leftIconsData = [
     { href: 'https://github.com', src: '/static/icons/github.png', alt: 'GitHub' },
     { href: 'https://instagram.com', src: '/static/icons/instagram.png', alt: 'Instagram' },
-    { href: 'https://twitter.com', src: '/static/icons/x.png', alt: 'Twitter' },
+    { href: 'https://twitter.com', src: '/static/icons/twitter.svg', alt: 'Twitter' },
     { href: 'https://linkedin.com', src: '/static/icons/VK.png', alt: 'VK' },
 ];
 
