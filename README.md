@@ -97,7 +97,7 @@ To read the API docs, open the following pages:
   - `image/`: Изображения.
   - `scripts.js`: Основной скрипт JavaScript.
   - `style.css`: Основной файл стилей CSS.
-  - `text.py`: (Назначение не ясно по имени файла).
+  - `text.py`: Файл с элементами данных python
 
 - `templates/`: HTML шаблоны.
   - `about.html`: Страница "Обо мне".
