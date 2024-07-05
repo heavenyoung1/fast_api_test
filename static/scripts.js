@@ -32,3 +32,12 @@ function createIconElements(containerId, iconsData) {
 
 createIconElements('left-icons', leftIconsData);
 createIconElements('right-icons', rightIconsData);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollButton = document.getElementById('scroll-button');
+    const targetSection = document.getElementById('target-section');
+
+    scrollButton.addEventListener('click', () => {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+});

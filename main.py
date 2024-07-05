@@ -14,7 +14,7 @@ from app import crud, models, schemas
 from app.database import get_db
 
 app = FastAPI(
-    title="My first test app made on FastAPI",
+    title="Web Artisan on FastAPI",
     description="Creator HeavenYoung",
     version="0.1",
 )
