@@ -227,11 +227,79 @@ h2 {
     margin-right: 8px;
 }
 
-/* -------------------------------- */
+/* -------------------------------- СТИЛИ ДЛЯ ВЕРТИКАЛЬНЫХ СТАТИЧЕСКИХ ЭЛЕМЕНТОВ */
 
+.fixed-icons {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
 
+#left-icons {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
+#right-icons {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
+.fixed-icons a {
+    margin: 10px 0;
+}
 
+.fixed-icons img {
+    width: 24px;
+    height: 24px;
+}
 
+.content {
+    padding: 20px;
+}
 
+/* -------------------------------- СТИЛИ ДЛЯ ВЕРТИКАЛЬНЫХ СТАТИЧЕСКИХ ЭЛЕМЕНТОВ */
+
+.fixed-icons {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+#left-icons {
+    left: 20px;
+    bottom: 20px;
+}
+
+#right-icons {
+    right: 20px;
+    bottom: 20px;
+}
+
+.fixed-icons a {
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.fixed-icons img {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%); /* Assuming your icons are dark and you want them light */
+}
+
+.line {
+    width: 1px;
+    height: 100px;
+    background-color: #ccd6f6;
+    margin-top: 10px;
+}
+
+.content {
+    padding: 20px;
+}
