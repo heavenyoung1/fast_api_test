@@ -40,13 +40,65 @@ body {
     font-family: 'Calibre Light';
 }
 
-.menu {
+/*.menu {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 100%;
     margin: 30px 50px;
+}*/
+
+.navigation-bar {
+    background-color: #0a192f;
+    padding: 10px;
+    margin-top: 20px;
+    margin-right: 70px;
 }
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+/* Стили для ссылок */
+.menu li a {
+    color: #64ffda;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative; /* Для позиционирования псевдоэлемента */
+    display: inline-block;
+    transition: color 0.3s ease; /* Плавная анимация цвета текста */
+}
+
+.menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #64ffda;
+    transform: scaleX(0); /* Начальное состояние анимации */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #ccd6f6;
+}
+
+.menu li a:hover::after {
+    transform: scaleX(1); /* При наведении увеличиваем ширину псевдоэлемента */
+    transform-origin: bottom left;
+}
+/*----------------------------------*/
 
 .dropdown-item {
     list-style-type: none;
@@ -79,10 +131,11 @@ body {
 }
 
 .main-down {
-    color: #8892b0;
+    color: #a8b2d1;
 }
 
 .description {
+    font-family: 'Calibre Light';
     width: 600px;
     font-size: 20px;
     color: #8892b0;
@@ -235,6 +288,10 @@ h2 {
     margin-right: 8px;
 }
 
+.detail-list {
+    font-family: "Calibre Light";
+}
+
 .fixed-icons {
     position: fixed;
     display: flex;
@@ -310,17 +367,21 @@ h2 {
     width: 35%;
     text-align: left;
     color: #ccd6f6;
+    font-family: 'Calibre Light';
 }
 
 .project-details .featured {
+    font-family: 'SFMono Medium';
     color: #64ffda;
     font-size: 14px;
 }
 
 .project-details h3 {
+    font-family: 'Calibre Semibold';
     margin: 10px 0;
-    font-size: 24px;
+    font-size: 28px;
     color: #ccd6f6;
+    font-weight: bold;
 }
 
 .project-details .description {
@@ -371,7 +432,7 @@ h2 {
 }
 
 .project-tile {
-    background-color: #1c1c1e;
+    background-color: #2C2C2E;
     border-radius: 14px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -442,15 +503,15 @@ h2 {
 #get-in-touch .btn {
     display: inline-block;
     padding: 12px 24px;
-    border: 2px solid #00ccff;
+    border: 2px solid #007aff;
     border-radius: 5px;
-    color: #00ccff;
+    color: #007aff;
     text-decoration: none;
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 #get-in-touch .btn:hover {
-    background-color: #00ccff;
-    color: #0a0a0a;
+    background-color: #007aff;
+    color: #ffffff;
 }

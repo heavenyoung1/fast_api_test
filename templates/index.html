@@ -24,23 +24,22 @@
         <h2 class="main-above">Hi, my name is</h2>
             <h1 class="main-on">Evgeny Mefed</h1>
                 <h3 class="main-down">I build things for the web.</h3>
-                    <p class="description">I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at Upstatement.</p>
+                    <p class="description">I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at <a href="#" style = "color: #64ffda; font-weight: bold; text-decoration-line: none;">Upstatement</a>.</p>
     </section>
 
-<!-- BLOCK 01 ABOUT ME -->
+<!-- BLOCK 1 ABOUT ME -->
+<section id="about">
+    {% include "about.html" %}
+    {% block content1 %}{% endblock %}
+    <!-- BLOCK 1.1 ITERATION SKILLS -->    
+        {% include "skills.html" %}
+        {% block content2 %}{% endblock %}
+</section>
 
-{% include "about.html" %}
-{% block content1 %}{% endblock %}
-
-<!-- BLOCK 1.1 ITERATION SKILLS -->    
-
-{% include "skills.html" %}
-{% block content2 %}{% endblock %}
-    
 <!-- BLOCK 2 WHERE I'VE WORKED -->
-
+<section id="work">
 <h2 class="text-about" href="#" span style="color: #64ffda; font-family: 'SFMono Medium'; font-weight: normal;">02. <span style="color: #ccd6f6; font-family: 'Calibre Semibold'; font-size: 34px;">Where I've worked</h2>
-
+    <section id="work">
     <div class="work-container">
         <div class="company-list">
             {% for company in companies %}
@@ -57,7 +56,7 @@
                     <h3>{{ selected_company.position }}</h3>
                     <p>{{ selected_company.period }}</p>
                     <a href="{{ selected_company.link_job }}">@{{ selected_company.name }}</a>
-                    <ul>
+                    <ul class="detail-list">
                         {% for function in functions %}
                             <li>{{ function.description }}</li>
                         {% endfor %}
@@ -68,7 +67,7 @@
             {% endif %}
         </div>
     </div>
-
+</section>
 
 <!-- BLOCK 3 OTHER NOTEWORTHY PROJECTS -->    
 
@@ -76,39 +75,35 @@
 {% block content3 %}{% endblock %}
 
 <!-- BLOCK 4 OTHER NOTEWORTHY PROJECTS -->    
-
-<h2 class="text-about" href="#" span style="color: #64ffda; font-family: 'SFMono Medium'; font-weight: normal;">04. <span style="color: #ccd6f6; font-family: 'Calibre Semibold'; font-size: 34px;">Other Noteworthy Projects</h2>
-
-    <section id="noteworthy-projects">
-        <div class="project-grid">
-            {% for project in projects %}
-            <div class="project-tile">
-                <h3>{{ project.name }}</h3>
-                <p>{{ project.description }}</p>
-                <div class="project-tech-stack">
-                    {{ project.skills }}
+<section id="noteworthy-projects">
+    <h2 class="text-about" href="#" span style="color: #64ffda; font-family: 'SFMono Medium'; font-weight: normal;">04. <span style="color: #ccd6f6; font-family: 'Calibre Semibold'; font-size: 34px;">Other Noteworthy Projects</h2>
+            <div class="project-grid">
+                {% for project in projects %}
+                <div class="project-tile">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.description }}</p>
+                    <div class="project-tech-stack">
+                        {{ project.skills }}
+                    </div>
+                    <div class="project-links">
+                        {% if project.link %}
+                        <a href="{{ project.link }}"></a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="project-links">
-                    {% if project.link %}
-                    <a href="{{ project.link }}"></a>
-                    {% endif %}
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </section>
+</section>
 
 <!-- BLOCK 5 GET IN TOUCH --> 
-
-    <section id="get-in-touch">
-        <h2>04. What's Next?</h2>
-        <h3>Get In Touch</h3>
-        <p>
-            Although I'm not currently looking for any new opportunities, my inbox is always open. 
-            Whether you have a question or just want to say hi, I’ll try my best to get back to you!
-        </p>
-        <a href="https://t.me/YourTelegramUsername" class="btn">Say Hello</a>
-    </section>
+<section id="get-in-touch">
+    <h2>04. What's Next?</h2>
+    <h3>Get In Touch</h3>
+    <p>
+        Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+    </p>
+    <a href="https://t.me/YourTelegramUsername" class="btn">Say Hello</a>
+</section>
 
 
 

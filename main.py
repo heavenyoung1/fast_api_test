@@ -36,7 +36,7 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
 
     skills = list_skills
     companies_item = crud.get_companies(db)
-    #projects = db.query(ProjectPlate).all()
+    projects = crud.get_projects(db)
 
     return templates.TemplateResponse("index.html", {"request": request, 
                                                      "companies": companies, 
@@ -44,7 +44,8 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
                                                      "functions": functions,
                                                      "skills": skills,
                                                      "items": companies_item,
-                                                     }) #"projects": projects
+                                                     "projects": projects
+                                                     }) 
 
 #------------------------POST-REQUESTS------------------------#
 

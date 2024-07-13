@@ -30,6 +30,10 @@ function createIconElements(containerId, iconsData) {
     container.appendChild(line);
 }
 
+function redirectToResume() {
+    window.location.href = '/resume'; // Вызов GET запроса на /resume
+}
+
 createIconElements('left-icons', leftIconsData);
 createIconElements('right-icons', rightIconsData);
 
