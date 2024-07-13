@@ -45,7 +45,7 @@
     <div class="company-list">
         {% for company in companies %}
             <div class="company">
-                <a href="?selected_company_id={{ company.id }}">
+                <a href="selected_company_id={{ company.id }}">
                     <h3>{{ company.name }}</h3>
                 </a>
             </div>
@@ -69,9 +69,15 @@
     </div>
 </div>
 
+
 <!-- BLOCK 3 OTHER NOTEWORTHY PROJECTS -->    
 
-<h2 class="text-about" href="#" span style="color: #64ffda">03. <span style="color: #ccd6f6">Other Noteworthy Projects</h2>
+{% include "projects.html" %}
+{% block content3 %}{% endblock %}
+
+<!-- BLOCK 4 OTHER NOTEWORTHY PROJECTS -->    
+
+<h2 class="text-about" href="#" span style="color: #64ffda">04. <span style="color: #ccd6f6">Other Noteworthy Projects</h2>
 
 </main>
 

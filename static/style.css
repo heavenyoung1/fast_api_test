@@ -265,3 +265,78 @@ h2 {
 .content {
     padding: 20px;
 }
+
+/*----------------------*/
+
+/* Project Section */
+#projects {
+    margin: 100px 0;
+    text-align: center;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.project-image {
+    width: 60%;
+    transition: filter 0.3s ease; /* Плавный переход для фильтра */
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    filter: sepia(1) saturate(5) hue-rotate(340deg); /* Красный оттенок */
+    transition: filter 0.3s ease; /* Плавный переход для фильтра */
+}
+
+.project-image img:hover {
+    filter: none; /* Обычное изображение при наведении */
+}
+
+.project-details {
+    width: 35%;
+    text-align: left;
+    color: #ccd6f6;
+}
+
+.project-details .featured {
+    color: #64ffda;
+    font-size: 14px;
+}
+
+.project-details h3 {
+    margin: 10px 0;
+    font-size: 24px;
+    color: #ccd6f6;
+}
+
+.project-details .description {
+    margin: 20px 0;
+    color: #8892b0;
+}
+
+.project-details .tech-stack {
+    margin: 20px 0;
+    font-family: "SFMono Medium";
+    color: #8892b0;
+}
+
+.project-links {
+    display: flex;
+    align-items: center;
+}
+
+.project-links a {
+    margin-right: 10px;
+}
+
+.project-links img {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%);
+}
