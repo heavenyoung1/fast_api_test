@@ -39,35 +39,35 @@
     
 <!-- BLOCK 2 WHERE I'VE WORKED -->
 
-<h2 class="text-about" href="#" span style="color: #64ffda">02. <span style="color: #ccd6f6"> Where I've worked</h2>
+<h2 class="text-about" href="#" span style="color: #64ffda; font-family: 'SFMono Medium'; font-weight: normal;">02. <span style="color: #ccd6f6; font-family: 'Calibre Semibold'; font-size: 34px;">Where I've worked</h2>
 
-<div class="work-container">
-    <div class="company-list">
-        {% for company in companies %}
-            <div class="company">
-                <a href="selected_company_id={{ company.id }}">
-                    <h3>{{ company.name }}</h3>
-                </a>
-            </div>
-        {% endfor %}
+    <div class="work-container">
+        <div class="company-list">
+            {% for company in companies %}
+                <div class="company">
+                    <a href="?selected_company_id={{ company.id }}">
+                        <h3>{{ company.name }}</h3>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="company-details">
+            {% if selected_company %}
+                <div class="details">
+                    <h3>{{ selected_company.position }}</h3>
+                    <p>{{ selected_company.period }}</p>
+                    <a href="{{ selected_company.link_job }}">@{{ selected_company.name }}</a>
+                    <ul>
+                        {% for function in functions %}
+                            <li>{{ function.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <p>Please select a company to see the details.</p>
+            {% endif %}
+        </div>
     </div>
-    <div class="company-details">
-        {% if selected_company %}
-            <div class="details">
-                <h3>{{ selected_company.position }}</h3>
-                <p>{{ selected_company.period }}</p>
-                <a href="{{ selected_company.link_job }}">@{{ selected_company.name }}</a>
-                <ul>
-                    {% for function in functions %}
-                        <li>{{ function.description }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% else %}
-            <p>Please select a company to see the details.</p>
-        {% endif %}
-    </div>
-</div>
 
 
 <!-- BLOCK 3 OTHER NOTEWORTHY PROJECTS -->    
@@ -77,7 +77,7 @@
 
 <!-- BLOCK 4 OTHER NOTEWORTHY PROJECTS -->    
 
-<h2 class="text-about" href="#" span style="color: #64ffda">04. <span style="color: #ccd6f6">Other Noteworthy Projects</h2>
+<h2 class="text-about" href="#" span style="color: #64ffda; font-family: 'SFMono Medium'; font-weight: normal;">04. <span style="color: #ccd6f6; font-family: 'Calibre Semibold'; font-size: 34px;">Other Noteworthy Projects</h2>
 
     <section id="noteworthy-projects">
         <div class="project-grid">
@@ -98,8 +98,17 @@
         </div>
     </section>
 
+<!-- BLOCK 5 GET IN TOUCH --> 
 
-
+    <section id="get-in-touch">
+        <h2>04. What's Next?</h2>
+        <h3>Get In Touch</h3>
+        <p>
+            Although I'm not currently looking for any new opportunities, my inbox is always open. 
+            Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        </p>
+        <a href="https://t.me/YourTelegramUsername" class="btn">Say Hello</a>
+    </section>
 
 
 
