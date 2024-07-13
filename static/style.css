@@ -340,3 +340,36 @@ h2 {
     height: 24px;
     filter: invert(100%);
 }
+
+/* PLATE */
+
+#noteworthy-projects {
+    text-align: center;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.project-tile {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-tile h3 {
+    margin-top: 0;
+}
+
+.project-tech-stack {
+    margin: 10px 0;
+}
+
+.project-links img {
+    width: 20px;
+    height: 20px;
+}

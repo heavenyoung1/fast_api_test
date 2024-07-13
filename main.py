@@ -19,7 +19,7 @@ app = FastAPI(
     version="0.1",
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static") #Import Static Files (FastAPI | Starlette)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 #------------------------MAJOR REQUEST------------------------#
@@ -27,24 +27,25 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/home", response_class=HTMLResponse)
 def read_companies(request: Request, selected_company_id: int = None, db: Session = Depends(get_db)):
     """ГЕНЕРАЦИЯ ГЛАВНОЙ СТРАНИЦЫ"""
+
     companies = crud.get_companies(db)
-    selected_company = None
+    companies_item = crud.get_companies(db) #зачем мне второй круд делающий то же самое????
+    projects = crud.get_projects(db)
     functions = []
+    skills = list_skills
+
+    selected_company = None
     if selected_company_id:
         selected_company = crud.get_company_by_id(db, selected_company_id)
         functions = crud.get_functions_by_company_id(db, selected_company_id)
-
-    skills = list_skills
-    companies_item = crud.get_companies(db)
-    #projects = db.query(ProjectPlate).all()
-
     return templates.TemplateResponse("index.html", {"request": request, 
                                                      "companies": companies, 
                                                      "selected_company": selected_company, 
                                                      "functions": functions,
                                                      "skills": skills,
-                                                     "items": companies_item,
-                                                     }) #"projects": projects
+                                                     "items": companies_item, #это еще что за хрень
+                                                     "projects": projects
+                                                     }) 
 
 #------------------------POST-REQUESTS------------------------#
 

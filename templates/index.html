@@ -79,6 +79,30 @@
 
 <h2 class="text-about" href="#" span style="color: #64ffda">04. <span style="color: #ccd6f6">Other Noteworthy Projects</h2>
 
+    <section id="noteworthy-projects">
+        <div class="project-grid">
+            {% for project in projects %}
+            <div class="project-tile">
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+                <div class="project-tech-stack">
+                    {{ project.skills }}
+                </div>
+                <div class="project-links">
+                    {% if project.link %}
+                    <a href="{{ project.link }}"></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+
+
+
 </main>
 
 <!-- Контейнер для адреса электронной почты -->

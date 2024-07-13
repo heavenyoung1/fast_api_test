@@ -86,8 +86,8 @@ def get_functions_by_company_id(db: Session, company_id: int):
 def get_project(db: Session, project_id: int) -> models.ProjectPlate | None:
     return db.query(models.ProjectPlate).filter(models.ProjectPlate.id == project_id).first()
 
-def get_projects(db: Session):
-    return db.query(models.ProjectPlate).all()
+def get_projects(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(ProjectPlate).offset(skip).limit(limit).all()
 
 def update_project(db: Session, project_id: int, project: schemas.ProjectCreate):
     db_project = db.query(models.ProjectPlate).filter(models.ProjectPlate.id == project_id).first()
