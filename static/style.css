@@ -40,14 +40,6 @@ body {
     font-family: 'Calibre Light';
 }
 
-/*.menu {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
-    margin: 30px 50px;
-}*/
-
 .navigation-bar {
     background-color: #0a192f;
     padding: 10px;
@@ -103,7 +95,8 @@ body {
 .dropdown-item {
     list-style-type: none;
     padding-left: 50px;
-    font-family: 'SFMono Medium';
+    font-family: 'SFMono Regular';
+
 }
 
 .main-information {
