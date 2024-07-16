@@ -7,10 +7,9 @@ client = TestClient(app)
 class TestMain(unittest.TestCase):
 
     def test_read_companies(self):
-        response = client.get("/home")
+        response = self.client.get("/home")
         self.assertEqual(response.status_code, 200)
-        # Проверяем, что шаблон возвращает страницу, содержащую список компаний
-        self.assertIn("companies", response.text)
+        self.assertIn("companies", response.content.decode())
 
 
 if __name__ == '__main__':

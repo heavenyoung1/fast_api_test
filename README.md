@@ -106,6 +106,10 @@ To read the API docs, open the following pages:
   - `project-item.html`: Шаблон элемента проекта.
   - `skills.html`: Страница с навыками.
 
+- `tests/`: Тесты.
+  - `test_main.py` 
+  - `test_crud.py`
+
 - `venv/`: Виртуальное окружение Python.
 
 - `.gitignore`: Файл для исключения файлов и директорий из системы контроля версий Git.
