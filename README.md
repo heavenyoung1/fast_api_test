@@ -1,12 +1,15 @@
-## Сайт-Портфолио
+## Сайт-Портфолио (Website Potrfolio on FastAPI)
 
 Этот проект состоялся благодаря [Brittany Chiang](https://github.com/bchiang7/v4), к слову это четвертая версия её проекта. Проект Бриттани написан при помощи фреймворка JavaScript - Gatsby, мой веб-сайт написан на FastAPI. Вcе цветовые решения и шрифты вы можете найти у неё по ссылке. В данном проекте множество недоделок, которые в последующем будут решаться, сейчас же призываю Вас писать тикеты и делать Форки, чтобы довести проект до более качественного уровня.
 Новичку, который хочет учить FastAPI, советую познакомиться с видео-уроками [Сурена Хореняна](https://www.youtube.com/watch?v=z4pbneT6SLw&list=PLYnH8mpFQ4akzzS1D9IHkMuXacb-bD4Cl&index=1)
 Если у Вас есть какие-либо вопросы, призываю писать [мне](https://t.me/heavenyoung) в Telegram.
 Более детальное описание находится внизу проекта, призываю ознакомиться с ним. Всем удачи!
 
-## Внешний Вид
+This project is thanks to [Brittany Chiang](https://github.com/bchiang7/v4), by the way this is the fourth version of her project. Brittany's project is written with JavaScript framework - Gatsby, my website is written in FastAPI. You can find all the color schemes and fonts from her link. There are a lot of bugs in this project which will be solved later, now I encourage you to write tickets and make Forks to bring the project to a better level.
+If you have any questions, I encourage you to write to [me](https://t.me/heavenyoung) in Telegram.
+A more detailed description is at the bottom of the project, I encourage you to familiarize yourself with it. Good luck to everyone!
 
+## Внешний Вид
 <picture>
   <img alt="Главное меню" src="/screens/1.png">
 </picture>
@@ -36,7 +39,7 @@ uvicorn app.main:app --reload
 * [`/docs`](http://127.0.0.1:8000/docs) for classic OpenAPI docs
 
 
-* ## TODO list
+## TODO list
 
 * Написать тесты (скорее всего Pytest)
 * Изолировать эндпоинты, чтобы соблюдать принципы SOLID, а именно Принцип единственной ответственности
@@ -44,7 +47,7 @@ uvicorn app.main:app --reload
 
 ## Дерево проекта
 
-### Корневая директория
+## Корневая директория
 - `alembic/`
   - `versions/`
   - `env.py`
@@ -135,8 +138,7 @@ uvicorn app.main:app --reload
 
 - `sql_app.db`: База данных SQLite.
 
-
-### Прочти меня
+## Прочти меня
 
 Этот пет-проект состоялся благодаря [Brittany Chiang](https://github.com/bchiang7/v4). Интерфейс, и то что умёёт её веб-сайт побудили меня взяться сделать то же самое, но при помощи FastAPI. Проект Бриттани написан при помощи фреймворка JavaScript - Gatsby. ВСе цветовые решения и шрифты вы можете найти у неё по ссылке. Веб-сайт Бриттани умеет гораздо больше, чем мой веб-сайт, в моих планах его доработать, так как это моё первое знакомство с FastAPI. Новичку, который хочет познакомиться с FastAPI советую начать с базового изучения документации, а так же видео-уроков [Сурена Хореняна](https://www.youtube.com/watch?v=z4pbneT6SLw&list=PLYnH8mpFQ4akzzS1D9IHkMuXacb-bD4Cl&index=1). 
 В данном проекте я изучил и применил на практике конечно же FastAPI, Pydantic, при помощи которого удобно валидировать типы данных, собственно говоря, это является фишкой FastAPI. Шаблоны Jinja показались мне сильно урезанными в функционале, захотелось доработать их, потому что, у меня не получилось сделать то, что я хотел, например вывести результат обычной функции в шаблоне. В данном проекте реализованы схемы Pydantic, модели, которые писал при помощи движка SQLAlchemy. Я, мягко говоря, задался вопросом, зачем использовать Mapped, если можно его не использовать, поэтому большая часть моделей не включает в себя Mapped, а одна включает. База Данных реализована при помощи SQLite, до этого я пользовался PostgreSQL, и мне понравилось то, что здесь не нужен отдельный клиент, связь, логины и пароли и тому подобное. Достаточно просто прописать ссылку на файлик с SQL, где будут храниться наши данные и таблицы. Познакомился со Startlette и то как круто пишется документация при помощи OpenAPI

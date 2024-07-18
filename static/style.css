@@ -40,6 +40,16 @@ body {
     font-family: 'Calibre Light';
 }
 
+.vertical-email {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotate(180deg);
+    padding: 20px;
+}
+
 .navigation-bar {
     background-color: #0a192f;
     padding: 10px;
@@ -425,11 +435,12 @@ h2 {
 }
 
 .project-tile {
-    background-color: #2C2C2E;
+    background-color: #112240;
     border-radius: 14px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     padding: 20px;
     transition: transform 0.3s, box-shadow 0.3s;
+
 }
 
 .project-tile:hover {
@@ -438,21 +449,24 @@ h2 {
 }
 
 .project-tile h3 {
+    font-family: 'SFMono Medium';
     margin-top: 0;
     font-size: 20px;
-    color: #00ccff;
+    color: #64ffda;
 }
 
 .project-tile p {
     margin: 10px 0;
-    font-size: 14px;
-    color: #a0a0a0;
+    font-size: 18px;
+    color: #8892b0;;
+    font-family: 'Calibre Light';
 }
 
 .project-tech-stack {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 16px;
     color: #00ccff;
+    font-family: 'SFMono Regular';
 }
 
 .project-links a {
@@ -470,38 +484,50 @@ h2 {
 /* GET IN TOUCH */
 
 #get-in-touch {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 80px 0;
+
 }
 
 #get-in-touch h2 {
     font-size: 24px;
-    color: #00ccff;
+    font-family: 'SFMono Regular';
+    color: #64ffda;
     margin-bottom: 10px;
 }
 
 #get-in-touch h3 {
     font-size: 32px;
-    color: #ffffff;
+    font-family: 'SFMono Regular';
+    color: #e6f1ff;
     margin: 10px 0;
 }
 
 #get-in-touch p {
     font-size: 16px;
-    color: #a0a0a0;
+    color: #8892b0;
     margin: 20px 0;
     max-width: 600px;
+    text-align: center;
+    font-family: 'Calibre Light';
+    font-size: 20px;
 }
 
 #get-in-touch .btn {
     display: inline-block;
+    text-align: center;
+    margin-top: 20px;
     padding: 12px 24px;
     border: 2px solid #007aff;
     border-radius: 5px;
-    color: #007aff;
+    color: #64ffda;
     text-decoration: none;
+    font-family: 'SFMono Medium';
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s;
+    width: 80px;
 }
 
 #get-in-touch .btn:hover {
