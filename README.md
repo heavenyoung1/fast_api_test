@@ -1,13 +1,13 @@
-## Сайт-Портфолио (Website Potrfolio on FastAPI)
+## Personal website built with Python, FastAPI (Персональный веб-сайт на Python и FastAPI)
 
-Этот проект состоялся благодаря [Brittany Chiang](https://github.com/bchiang7/v4), к слову это четвертая версия её проекта. Проект Бриттани написан при помощи фреймворка JavaScript - Gatsby, мой веб-сайт написан на FastAPI. Вcе цветовые решения и шрифты вы можете найти у неё по ссылке. В данном проекте множество недоделок, которые в последующем будут решаться, сейчас же призываю Вас писать тикеты и делать Форки, чтобы довести проект до более качественного уровня.
+🚨 (ENG) This project is thanks to [Brittany Chiang](https://github.com/bchiang7/v4), by the way this is the fourth version of her project. Brittany's project is written with JavaScript framework - Gatsby, my website is written in FastAPI. You can find all the color schemes and fonts from her link. There are a lot of bugs in this project which will be solved later, now I encourage you to write tickets and make Forks to bring the project to a better level.
+If you have any questions, I encourage you to write to [me](https://t.me/heavenyoung) in Telegram.
+A more detailed description is at the bottom of the project, I encourage you to familiarize yourself with it. Good luck to everyone!
+
+🚨 (RUS) Этот проект состоялся благодаря [Brittany Chiang](https://github.com/bchiang7/v4), к слову это четвертая версия её проекта. Проект Бриттани написан при помощи фреймворка JavaScript - Gatsby, мой веб-сайт написан на FastAPI. Вcе цветовые решения и шрифты вы можете найти у неё по ссылке. В данном проекте множество недоделок, которые в последующем будут решаться, сейчас же призываю Вас писать тикеты и делать Форки, чтобы довести проект до более качественного уровня.
 Новичку, который хочет учить FastAPI, советую познакомиться с видео-уроками [Сурена Хореняна](https://www.youtube.com/watch?v=z4pbneT6SLw&list=PLYnH8mpFQ4akzzS1D9IHkMuXacb-bD4Cl&index=1)
 Если у Вас есть какие-либо вопросы, призываю писать [мне](https://t.me/heavenyoung) в Telegram.
 Более детальное описание находится внизу проекта, призываю ознакомиться с ним. Всем удачи!
-
-This project is thanks to [Brittany Chiang](https://github.com/bchiang7/v4), by the way this is the fourth version of her project. Brittany's project is written with JavaScript framework - Gatsby, my website is written in FastAPI. You can find all the color schemes and fonts from her link. There are a lot of bugs in this project which will be solved later, now I encourage you to write tickets and make Forks to bring the project to a better level.
-If you have any questions, I encourage you to write to [me](https://t.me/heavenyoung) in Telegram.
-A more detailed description is at the bottom of the project, I encourage you to familiarize yourself with it. Good luck to everyone!
 
 ## Внешний Вид
 <picture>
@@ -41,9 +41,9 @@ uvicorn app.main:app --reload
 
 ## TODO list
 
-* Написать тесты (скорее всего Pytest)
-* Изолировать эндпоинты, чтобы соблюдать принципы SOLID, а именно Принцип единственной ответственности
-* Автоматизировать тестирование
+- [ ] Написать тесты (скорее всего Pytest)
+- [ ] Изолировать эндпоинты, чтобы соблюдать принципы SOLID, а именно Принцип единственной ответственности
+- [ ] Автоматизировать тестирование
 
 ## Дерево проекта
 
