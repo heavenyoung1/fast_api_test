@@ -27,10 +27,10 @@ class TestMain(unittest.TestCase):
 
     def test_create_job(self):
         job_data = {
-            "name": "string",
-            "position": "string",
-            "link_job": "string",
-            "period": "string",
+            "name": "test_name",
+            "position": "lol",
+            "link_job": "https://lol.ru",
+            "period": "1968",
             "function": [
                 "string"
             ],
