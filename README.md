@@ -38,11 +38,13 @@ uvicorn app.main:app --reload
 
 * [`/docs`](http://127.0.0.1:8000/docs) for classic OpenAPI docs
 
+Документация к [тестам Unitest](https://docs.python.org/3/library/unittest.html)
+
 
 ## TODO list
 
-- [ ] Написать тесты (скорее всего Pytest)
-- [ ] Изолировать эндпоинты, чтобы соблюдать принципы SOLID, а именно Принцип единственной ответственности
+- [ ] Написать тесты Unittest
+- [ ] Изолировать эндпоинты, чтобы соблюдать принципы [SOLID](https://habr.com/ru/companies/vk/articles/412699/), а именно Принцип единственной ответственности
 - [ ] Автоматизировать тестирование
 
 ## Дерево проекта
