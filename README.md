@@ -38,7 +38,7 @@ uvicorn app.main:app --reload
 
 * [`/docs`](http://127.0.0.1:8000/docs) for classic OpenAPI docs
 
-Документация к [тестам Unitest](https://docs.python.org/3/library/unittest.html)
+* Документация к [тестам Unitest](https://docs.python.org/3/library/unittest.html)
 
 
 ## TODO list

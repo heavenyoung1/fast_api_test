@@ -25,6 +25,24 @@ class TestMain(unittest.TestCase):
         self.assertIn("skills", content)
         self.assertIn("projects", content)
 
+    def test_create_job(self):
+        job_data = {
+            "name": "string",
+            "position": "string",
+            "link_job": "string",
+            "period": "string",
+            "function": [
+                "string"
+            ],
+            "id": 5
+        }
+        response = client.post("/jobs", json=job_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["name"], job_data["name"])
+
+
+        
+
     def tearDown(self) -> None:
         pass # Этот метод выполняется после каждого теста
 
