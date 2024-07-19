@@ -6,10 +6,12 @@ client = TestClient(app)
 
 class TestMain(unittest.TestCase):
 
-    def test_read_companies(self):
-        response = self.client.get("/home")
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("companies", response.content.decode())
+    def test_root(self):
+        response = client.get("/")
+        assert response.status_code == 200
+        assert response.json() == {"message": "Hello World!"}
+
+    
 
 
 if __name__ == '__main__':
