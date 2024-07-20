@@ -40,6 +40,14 @@ class TestMain(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["name"], job_data["name"])
 
+    def test_create_desc(self):
+        job_desc = {
+            "job_id": 1,
+            "description": "lolik"
+        }
+        response = client.post("/job-description", json=job_desc)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["description"], job_desc["description"])
 
         
 
