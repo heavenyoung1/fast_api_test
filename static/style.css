@@ -379,12 +379,13 @@ h2 {
     font-size: 14px;
 }
 
-.project-details h3 {
+.project-details a {
     font-family: 'Calibre Semibold';
     margin: 10px 0;
     font-size: 28px;
     color: #ccd6f6;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .project-details .description {
