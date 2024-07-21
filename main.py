@@ -35,7 +35,6 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
         functions = crud.get_functions_by_company_id(db, selected_company_id)
 
     skills = list_skills
-    companies_item = crud.get_companies(db)
     projects = crud.get_projects(db)
 
     return templates.TemplateResponse("index.html", {
@@ -44,7 +43,6 @@ def read_companies(request: Request, selected_company_id: int = None, db: Sessio
         "selected_company": selected_company, 
         "functions": functions,
         "skills": skills,
-        "items": companies_item,
         "projects": projects
     })
 

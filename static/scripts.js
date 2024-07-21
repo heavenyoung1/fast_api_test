@@ -1,8 +1,8 @@
 const leftIconsData = [
-    { href: 'https://github.com', src: '/static/icons/github.png', alt: 'GitHub' },
+    { href: 'https://github.com/heavenyoung1', src: '/static/icons/github.png', alt: 'GitHub' },
     { href: 'https://instagram.com', src: '/static/icons/instagram.png', alt: 'Instagram' },
     { href: 'https://twitter.com', src: '/static/icons/twitter.svg', alt: 'Twitter' },
-    { href: 'https://linkedin.com', src: '/static/icons/VK.png', alt: 'VK' },
+    { href: 'https://vk.com/', src: '/static/icons/VK.png', alt: 'VK' },
 ];
 
 const rightIconsData = [
